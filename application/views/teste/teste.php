@@ -1,0 +1,1 @@
+<p>Meu nome é <?= $nome ?> e eu tenho <?= $idade ?> anos de idade.</p>
