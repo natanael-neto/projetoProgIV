@@ -1,1 +1,6 @@
-<p>Meu nome é <?= $nome ?> e eu tenho <?= $idade ?> anos de idade.</p>
+<form action="Welcome/salvar" method="GET">
+    <input type="text" placeholder="nome" name="nome">
+    <button>
+        Enviar
+    </button>
+</form>

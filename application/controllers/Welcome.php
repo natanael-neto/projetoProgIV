@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use \models\entidades\ProspeccaoEstagio;
 
 class Welcome extends CI_Controller {
 
@@ -18,12 +19,26 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
 
+	 public function index()
+	{
+		
+
+		;
 		$dados['nome'] = "Natan";
 		$dados['idade'] = "21";
+		$dados['erro'] = 'Opa';
 
 		$this->template->load('template', 'teste/teste', $dados);
+	}
+
+	public function salvar() {
+		$prospeccaoEstagio = new ProspeccaoEstagio();
+
+		$prospeccaoEstagio->setNome($_GET['nome']);
+
+		$this->doctrine->em->flush();
+
+		print 'pegou';
 	}
 }
