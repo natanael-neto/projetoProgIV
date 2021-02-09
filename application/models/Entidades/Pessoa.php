@@ -10,14 +10,20 @@ namespace models\entidades;
 
 
 /**
- * @Entity @Table(name="prospeccao_estagio")
+ * @Entity @Table(name="pessoa")
  * */
-class ProspeccaoEstagio extends Entidade {
+class Pessoa extends Entidade {
     /**
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
     protected $nome;
+
+    /**
+     * @var integer
+     * @Column(type="integer", nullable=false)
+     */
+    protected $idade;
 
     /**
      * @return string
@@ -31,5 +37,19 @@ class ProspeccaoEstagio extends Entidade {
      */
     public function setNome($nome) {
         $this->nome = $nome;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    /**
+     * @param integer $idade
+     */
+    public function setIdade($idade) {
+        $this->idade = $idade;
     }
 }

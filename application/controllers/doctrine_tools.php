@@ -40,8 +40,7 @@ class Doctrine_tools extends CI_Controller
 
                 $classes = array(
                     $this->em->getClassMetadata('models\entidades\Entidade'),
-                    $this->em->getClassMetadata('models\entidades\ProspeccaoEstagio'),
-                );
+                    $this->em->getClassMetadata('models\entidades\Pessoa')                );
 
                 $tool->updateSchema($classes);
                 //gerar proxies
