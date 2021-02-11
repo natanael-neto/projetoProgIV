@@ -29,16 +29,6 @@ class Welcome extends CI_Controller {
 		$dados['idade'] = "21";
 		$dados['erro'] = 'Opa';
 
-		$this->template->load('template', 'teste/teste', $dados);
-	}
-
-	public function salvar() {
-		$prospeccaoEstagio = new ProspeccaoEstagio();
-
-		$prospeccaoEstagio->setNome($_GET['nome']);
-
-		$this->doctrine->em->flush();
-
-		print 'pegou';
+		$this->template->load('template', 'start', $dados);
 	}
 }
