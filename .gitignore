@@ -4,6 +4,7 @@ application/cache/*
 !application/cache/index.html
 application/config/database.php
 application/models/proxies
+/application/models/proxies
 application/logs/*
 !application/logs/index.html
 
