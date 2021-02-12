@@ -3,9 +3,9 @@
 namespace models\entidades;
 
 /**
- * @Entity @Table(name="plano")
+ * @Entity @Table(name="modalidade")
  * */
-class Plano extends Entidade
+class Modalidade extends Entidade
 {
     /**
      * @var string
@@ -20,13 +20,13 @@ class Plano extends Entidade
     protected $valor;
 
     /**
-     * @ManyToMany(targetEntity="Modalidade", mappedBy="planos")
+     * @ManyToMany(targetEntity="Plano", inversedBy="modalidades")
      */
-    protected $modalidades;
+    protected $planos;
 
     public function __construct()
     {
-        $this->modalidades = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->planos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -62,18 +62,18 @@ class Plano extends Entidade
     }
 
     /**
-     * @return Modalidade[]|@mixed
+     * @return Plano[]|mixed
      */
-    public function getModalidades()
+    public function getPlanos()
     {
-        return $this->modalidades;
+        return $this->planos;
     }
 
     /**
-     * @param Modalidade $modalidade
+     * @param Plano $plano
      */
-    public function setModalidade($modalidade)
+    public function setPlano($plano)
     {
-        $this->modalidade = $modalidade;
+        $this->plano = $plano;
     }
 }

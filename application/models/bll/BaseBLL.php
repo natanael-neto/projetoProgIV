@@ -1,6 +1,6 @@
 <?php
 
-namespace models\negocio;
+namespace models\bll;
 
 use Doctrine,
     Doctrine\ORM\Query,

@@ -1,8 +1,8 @@
 <?php
 
-namespace models\BLL;
+namespace models\bll;
 
-class PessoaBLL extends BaseBLL
+class AlunoBLL extends BaseBLL
 {
     public function __construct()
     {

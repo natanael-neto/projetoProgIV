@@ -2,11 +2,11 @@
 
 namespace models\bll;
 
-class PerfilBLL extends BaseBLL
+class PlanoBLL extends BaseBLL
 {
     public function __construct()
     {
-        $this->nomeEntidade = 'models\entidades\Perfil';
+        $this->nomeEntidade = 'models\entidades\Plano';
         parent::__construct();
     }
 }
