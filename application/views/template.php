@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="http://google.com.br">Google</a>
+			<a class="navbar-brand" href="<?= base_url('/controllers/doctrine_tools') ?>">Google</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
