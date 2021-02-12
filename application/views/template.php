@@ -1,114 +1,101 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academia SISCTRL</title>
 
-	<style type="text/css">
-		::selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		::-moz-selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		body {
-			background-color: #fff;
-			margin: 40px;
-			font: 13px/20px normal Helvetica, Arial, sans-serif;
-			color: #4F5155;
-		}
-
-		a {
-			color: #003399;
-			background-color: transparent;
-			font-weight: normal;
-		}
-
-		h1 {
-			color: #444;
-			background-color: transparent;
-			border-bottom: 1px solid #D0D0D0;
-			font-size: 19px;
-			font-weight: normal;
-			margin: 0 0 14px 0;
-			padding: 14px 15px 10px 15px;
-		}
-
-		code {
-			font-family: Consolas, Monaco, Courier New, Courier, monospace;
-			font-size: 12px;
-			background-color: #f9f9f9;
-			border: 1px solid #D0D0D0;
-			color: #002166;
-			display: block;
-			margin: 14px 0 14px 0;
-			padding: 12px 10px 12px 10px;
-		}
-
-		#body {
-			margin: 0 15px 0 15px;
-		}
-
-		p.footer {
-			text-align: right;
-			font-size: 11px;
-			border-top: 1px solid #D0D0D0;
-			line-height: 32px;
-			padding: 0 10px 0 10px;
-			margin: 20px 0 0 0;
-		}
-
-		#container {
-			margin: 10px;
-			border: 1px solid #D0D0D0;
-			box-shadow: 0 0 8px #D0D0D0;
-		}
-	</style>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="<? echo base_url('public/css/bootstrap.min.css') ?>">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="<? echo base_url('public/js/bootstrap.min.js') ?>"></script>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?><?=base_url() . 'public/adminLTE/'?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?><?=base_url() . 'public/adminLTE/'?>.plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?=base_url() . 'public/adminLTE/'?>plugins/summernote/summernote-bs4.min.css">
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="<?=base_url() . 'public/adminLTE/'?>#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?=base_url() . 'public/adminLTE/'?>index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?=base_url() . 'public/adminLTE/'?>#" class="nav-link">Contact</a>
+      </li>
+    </ul>
 
-<body>
+</div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="<?=base_url() . 'public/adminLTE/'?>https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0-rc
+    </div>
+  </footer>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="<?= base_url('/controllers/doctrine_tools') ?>">Google</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarText">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Features</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Pricing</a>
-					</li>
-				</ul>
-				<a class="btn btn-light btn-sm" target="_blank" href="http://google.com.br">Google</a>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
-			</div>
-		</div>
-	</nav>
-
-
-    <?php echo $contents; ?>
+<!-- jQuery -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/moment/moment.min.js"></script>
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?=base_url() . 'public/adminLTE/'?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?=base_url() . 'public/adminLTE/'?>dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?=base_url() . 'public/adminLTE/'?>dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?=base_url() . 'public/adminLTE/'?>dist/js/pages/dashboard.js"></script>
 </body>
-
 </html>
+
+<?php echo $contents; ?>
