@@ -11,7 +11,13 @@ class Agendamento extends Entidade
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
-    protected $nome;
+    protected $observacao;
+    
+    /**
+     * @var \DateTime
+     * @Column(type="datetime", nullable=false)
+     */
+    protected $dataAgendamento;
 
     /**
      * @OneToOne(targetEntity="Aula")
@@ -26,17 +32,33 @@ class Agendamento extends Entidade
     /**
      * @return string
      */
-    public function getNome()
+    public function getObservacao()
     {
-        return $this->nome;
+        return $this->observacao;
     }
 
     /**
-     * @param string $nome
+     * @param string $observacao
      */
-    public function setNome($nome)
+    public function setObservacao($observacao)
     {
-        $this->nome = $nome;
+        $this->observacao = $observacao;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataAgendamento()
+    {
+        return $this->dataAgendamento;
+    }
+
+    /**
+     * @param \DateTime $dataAgendamento
+     */
+    public function setDataAgendamento($dataAgendamento)
+    {
+        $this->dataAgendamento = $dataAgendamento;
     }
 
     /**

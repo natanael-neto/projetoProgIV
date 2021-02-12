@@ -8,10 +8,15 @@ namespace models\entidades;
 class Aula extends Entidade
 {
     /**
-     * @var string
-     * @Column(type="string", length=255, nullable=false)
+     * @var integer
+     * @Column(type="integer", nullable=false)
      */
-    protected $nome;
+    protected $capacidade;
+
+    /**
+     * @Column(type="time", nullable=false)
+     */
+    protected $horario;
 
     /**
      * @ManyToOne(targetEntity="Modalidade")
@@ -24,19 +29,29 @@ class Aula extends Entidade
     protected $professor;
 
     /**
-     * @return string
+     * @return integer
      */
-    public function getNome()
+    public function getCapacidade()
     {
-        return $this->nome;
+        return $this->capacidade;
     }
 
     /**
-     * @param string $nome
+     * @param integer $capacidade
      */
-    public function setNome($nome)
+    public function setCapacidade($capacidade)
     {
-        $this->nome = $nome;
+        $this->capacidade = $capacidade;
+    }
+
+    public function getHorario()
+    {
+        return $this->horario;
+    }
+
+    public function setHorario($horario)
+    {
+        $this->horario = $horario;
     }
 
     /**
