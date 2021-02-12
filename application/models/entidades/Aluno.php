@@ -48,6 +48,11 @@ class Aluno extends Entidade
     protected $perfil;
 
     /**
+     * @ManyToOne(targetEntity="Endereco")
+     */
+    protected $endereco;
+
+    /**
      * @return string
      */
     public function getNome()
@@ -157,5 +162,21 @@ class Aluno extends Entidade
     public function setPerfil($perfil)
     {
         $this->perfil = $perfil;
+    }
+
+    /**
+     * @return Endereco
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param Endereco $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
     }
 }

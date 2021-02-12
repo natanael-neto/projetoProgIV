@@ -48,7 +48,8 @@ class Doctrine_tools extends CI_Controller
                     $this->em->getClassMetadata('models\entidades\Professor'),
                     $this->em->getClassMetadata('models\entidades\Agendamento'),
                     $this->em->getClassMetadata('models\entidades\Profissional'),
-                    $this->em->getClassMetadata('models\entidades\Usuario')
+                    $this->em->getClassMetadata('models\entidades\Usuario'),
+                    $this->em->getClassMetadata('models\entidades\Endereco')
                 );
 
                 $tool->updateSchema($classes);

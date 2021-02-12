@@ -38,6 +38,16 @@ class Professor extends Entidade
     protected $dataNascimento;
 
     /**
+     * @ManyToOne(targetEntity="Endereco")
+     */
+    protected $endereco;
+
+    /**
+     * @Column(type="string", length=100, nullable=false)
+     */
+    protected $cref;
+
+    /**
      * @return string
      */
     public function getNome()
@@ -115,5 +125,37 @@ class Professor extends Entidade
     public function setDataNascimento($dataNascimento)
     {
         $this->dataNascimento = $dataNascimento;
+    }
+
+    /**
+     * @return Endereco
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param Endereco $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCref()
+    {
+        return $this->cref;
+    }
+
+    /**
+     * @param string $cref
+     */
+    public function setCref($cref)
+    {
+        $this->cref = $cref;
     }
 }

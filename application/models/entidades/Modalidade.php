@@ -14,20 +14,10 @@ class Modalidade extends Entidade
     protected $nome;
 
     /**
-     * @var float
-     * @Column(type="float", nullable=false)
+     * @var string
+     * @Column(type="string", length=255, nullable=false)
      */
-    protected $valor;
-
-    /**
-     * @ManyToMany(targetEntity="Plano", inversedBy="modalidades")
-     */
-    protected $planos;
-
-    public function __construct()
-    {
-        $this->planos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $descricao;
 
     /**
      * @return string
@@ -46,34 +36,18 @@ class Modalidade extends Entidade
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getValor()
+    public function getDescricao()
     {
-        return $this->valor;
+        return $this->descricao;
     }
 
     /**
-     * @param float $valor
+     * @param string $descricao
      */
-    public function setValor($valor)
+    public function setDescricao($descricao)
     {
-        $this->valor = $valor;
-    }
-
-    /**
-     * @return Plano[]|mixed
-     */
-    public function getPlanos()
-    {
-        return $this->planos;
-    }
-
-    /**
-     * @param Plano $plano
-     */
-    public function setPlano($plano)
-    {
-        $this->plano = $plano;
+        $this->descricao = $descricao;
     }
 }

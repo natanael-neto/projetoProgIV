@@ -11,7 +11,24 @@ class Usuario extends Entidade
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
-    protected $nome;
+    protected $username;
+
+    /**
+     * @var string
+     * @Column(type="string", length=255, nullable=false)
+     */
+    protected $login;
+
+    /**
+     * @var string
+     * @Column(type="string", length=255, nullable=false)
+     */
+    protected $password;
+
+    /**
+     * @Column(type="boolean", nullable=false)
+     */
+    protected $active = true;
 
     /**
      * @ManyToOne(targetEntity="Perfil")
@@ -21,17 +38,56 @@ class Usuario extends Entidade
     /**
      * @return string
      */
-    public function getNome()
+    public function getUsername()
     {
-        return $this->nome;
+        return $this->username;
     }
 
     /**
-     * @param string $nome
+     * @param string $username
      */
-    public function setNome($nome)
+    public function setUsername($username)
     {
-        $this->nome = $nome;
+        $this->username = $username;
+    }
+
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * @param string $login
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
     /**

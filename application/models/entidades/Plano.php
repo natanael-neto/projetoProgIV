@@ -20,7 +20,17 @@ class Plano extends Entidade
     protected $valor;
 
     /**
-     * @ManyToMany(targetEntity="Modalidade", mappedBy="planos")
+     * @var string
+     * @Column(type="string", length=255, nullable=false)
+     */
+    protected $descricao;
+
+    /** 
+     * @ManyToMany(targetEntity="Modalidade")
+     * @JoinTable(name="plano_modalidades",
+     *      joinColumns={@JoinColumn(name="plano_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="modalidade", referencedColumnName="id", unique=true)}
+     *      )
      */
     protected $modalidades;
 
@@ -75,5 +85,21 @@ class Plano extends Entidade
     public function setModalidade($modalidade)
     {
         $this->modalidade = $modalidade;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param string $descricao
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
     }
 }

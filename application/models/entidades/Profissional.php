@@ -32,6 +32,31 @@ class Profissional extends Entidade
     protected $telefone;
 
     /**
+     * @var string
+     * @Column(type="string", length=20, nullable=false)
+     */
+    protected $funcao;
+
+    /**
+     * @var integer
+     * @Column(type="integer", nullable=false)
+     */
+    protected $cargaHoraria;
+
+    /**
+     * @var integer
+     * @Column(type="integer", nullable=false)
+     */
+    protected $inicioJornada;
+
+    /**
+     * @var integer
+     * @Column(type="integer", nullable=false)
+     */
+    protected $saidaJornada;
+
+
+    /**
      * @var \DateTime
      * @Column(type="datetime", nullable=false)
      */
@@ -41,6 +66,11 @@ class Profissional extends Entidade
      * @ManyToOne(targetEntity="Perfil")
      */
     protected $perfil;
+
+    /**
+     * @ManyToOne(targetEntity="Endereco")
+     */
+    protected $endereco;
 
     /**
      * @return string
@@ -136,5 +166,85 @@ class Profissional extends Entidade
     public function setPerfil($perfil)
     {
         $this->perfil = $perfil;
+    }
+
+    /**
+     * @return Endereco
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @param Endereco $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFuncao()
+    {
+        return $this->funcao;
+    }
+
+    /**
+     * @param string $funcao
+     */
+    public function setFuncao($funcao)
+    {
+        $this->funcao = $funcao;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getCargaHoraria()
+    {
+        return $this->cargaHoraria;
+    }
+
+    /**
+     * @param integer $cargaHoraria
+     */
+    public function setCargaHoraria($cargaHoraria)
+    {
+        $this->cargaHoraria = $cargaHoraria;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getInicioJornada()
+    {
+        return $this->inicioJornada;
+    }
+
+    /**
+     * @param integer $inicioJornada
+     */
+    public function setInicioJornada($inicioJornada)
+    {
+        $this->inicioJornada = $inicioJornada;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getSaidaJornada()
+    {
+        return $this->saidaJornada;
+    }
+
+    /**
+     * @param integer $saidaJornada
+     */
+    public function setSaidaJornada($saidaJornada)
+    {
+        $this->saidaJornada = $saidaJornada;
     }
 }
