@@ -1,0 +1,28 @@
+.botaoEntrar {
+    background-color: #21897E;
+    color: aliceblue;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 20px;
+}
+
+.botaoEntrar:hover {
+    background-color: aliceblue;
+    color: #192A51;
+}
+
+.div-links>li {
+    margin: 0 20px;
+}
+
+.logo {
+    padding: 0;
+    max-width: 100px;
+}
+
+.foto-background {
+    max-width: 100%;
+    max-height: auto;
+}
