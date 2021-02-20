@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="div-links navbar-nav">
+        <ul class="ul-links navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="#">SOBRE</a>
             </li>
@@ -20,6 +20,10 @@
         </button>
     </div>
 </nav>
-<div>
-    <img class="foto-background" src="<?= base_url() . "public/foto-background.png" ?>" alt="">
+
+<div class="jumbotron jumb-image">
+  <h1 class="display-4 jumb-titulo">ACADEMIA SISCTRL</h1>
+  <h1 class="display-6 jumb-descricao">A MELHOR ACADEMIA DA CIDADE</h1>
+  <hr style="background-color: gray" class="my-4">
+  <a class="btn btn-lg jumb-botao" href="#" role="button">CONHEÇA NOSSOS SERVIÇOS</a>
 </div>

@@ -8,13 +8,17 @@
     margin: 0 20px;
 }
 
-.botaoEntrar:hover {
+.botaoEntrar:hover,
+.botao-background:hover,
+.jumb-botao:hover {
     background-color: aliceblue;
     color: #192A51;
 }
 
-.div-links>li {
+.ul-links>li {
     margin: 0 21px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .logo {
@@ -22,7 +26,25 @@
     max-width: 100px;
 }
 
-.foto-background {
-    max-width: 100%;
-    max-height: auto;
+.jumb-image {
+    background: url('../background.jpg') no-repeat center center;
+    background-size: cover;
+    padding-top: 17%;
+    padding-bottom: 17%;
+}
+
+.jumb-titulo {
+    color: aliceblue;
+}
+
+.jumb-descricao {
+    color: #21897E;
+}
+
+.jumb-botao,
+.jumb-botao>a {
+    background-color: #21897E;
+    border: grey 2px;
+    font-weight: 600;
+    color: aliceblue;
 }
