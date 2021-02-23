@@ -4,17 +4,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="ul-links navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#sobre">SOBRE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#servicos">SERVIÇOS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CONTATOS</a>
-            </li>
-        </ul>
         <button type="button" class="btn btn-sm botaoEntrar">
             ENTRAR
         </button>
