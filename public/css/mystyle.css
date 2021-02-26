@@ -1,3 +1,7 @@
+*{
+    font-family: 'Teko', sans-serif;
+}
+
 body {
     margin-bottom: 1000px;
 }
@@ -16,7 +20,8 @@ body {
 .botao-background:hover,
 .jumb-botao:hover {
     background-color: aliceblue;
-    color: #192A51;
+    color: #21897E;
+    border: 1px solid #21897E;
 }
 
 .ul-links>li {
@@ -25,14 +30,19 @@ body {
     font-weight: 600;
 }
 
+nav{
+    max-height: 80px;
+}
+
 .logo {
-    padding: 0;
-    max-width: 100px;
+    margin-top: 20px;
+    width: 200px;
+    height: 100px;
 }
 
 .jumb-image {
     background: url('../background.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
     padding-top: 18.6%;
     padding-bottom: 18.6%;
 }
@@ -51,6 +61,11 @@ body {
     border: grey 2px;
     font-weight: 600;
     color: aliceblue;
+}
+
+.nomeDivisoria, .titulo-secao-1{
+    color: #192A51;
+    font-size: 60px;
 }
 
 .divisoria {
@@ -84,11 +99,64 @@ body {
     object-fit: cover;
 }
 
-.alert-contato {
-    color: aliceblue;
+/* CONTATO */
+
+i{
+    color: #FCDFA6;
+    font-size: 35px;
+    line-height: 60px;
+}
+
+.socialBox{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #21897E;
-    border-radius: 10px 20px;
-    box-shadow: 0 4px 4px -2px #dddddd;
-    -moz-box-shadow: 0 4px 4px -2px #dddddd;
-    -webkit-box-shadow: 0 4px 4px -2px #dddddd;
+    height: 60px;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: white;
+}
+
+.insta > i{
+    cursor: pointer;
+    margin-right: 350px;
+}
+
+.insta{
+    width: 72%;
+    margin: 40px auto;
+    cursor: pointer;
+}
+
+.email > i{
+    cursor: pointer;
+    margin-right: 280px;
+}
+
+.linkdIn > i{
+    cursor: pointer;
+    margin-right: 360px;
+}
+
+.whats > i{
+    margin-right: 350px;
+}
+
+.socialBox p{
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+
+/* RESPONSIVO */
+@media only screen and (max-width: 991px) {
+    nav{
+        max-height: 80px;
+    }
+    
+    .logo {
+        margin-top: -10px;
+    }
 }
