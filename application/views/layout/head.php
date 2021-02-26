@@ -3,6 +3,6 @@
 <title>Academia SISCTRL</title>
 
 <!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet" type="text/css" href=<?= base_url() . "public/css/bootstrap.min.css "?>">
-<link rel="stylesheet" type="text/css" href=<?= base_url() . "public/css/mystyle.css "?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . "public/css/bootstrap.min.css "?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() . "public/css/mystyle.css "?>">
 
