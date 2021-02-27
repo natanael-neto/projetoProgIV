@@ -7,6 +7,7 @@
         <meta charset="utf-8" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+        <link href="../public/fontawesome/css/all.css" rel="stylesheet">
     </head>
 
     <body>
@@ -44,9 +45,9 @@
     </body>
 
     <footer>
-        <p>Todos os direitos reservados</p>
-        <a href="">Instagram</a>
-        <a href="">Facebook</a>
-        <a href="">Telefone</a>
+        <p>Todos os direitos reservados <i class="far fa-copyright"></i></p>
+        <a href="">Instagram<i class="fab fa-instagram"></i></a>
+        <a href="">Facebook<i class="fab fa-facebook-square"></i></a>
+        <a href="">Telefone<i class="fas fa-phone-square-alt"></i></a>
     </footer>
 </html>

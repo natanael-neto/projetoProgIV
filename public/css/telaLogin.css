@@ -53,8 +53,6 @@ form .btn:hover{
     border: 1px solid #21897E;
 }
 
-
-
 footer{
     background-color: #192A51;
     color: white;
@@ -72,4 +70,11 @@ footer a{
 
 footer a:hover{
     color: #E85F5C;
+    text-decoration: none;
+}
+
+footer i{
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
 }
