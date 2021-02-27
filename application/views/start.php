@@ -111,7 +111,7 @@
         <div class="col-12">
             <div class="socialBox whats">
                 <i class="fab fa-whatsapp"></i>
-                <p>Whatsapp: 81-900000000</p>
+                <p>Whatsapp: 81-940000000</p>
             </div>
         </div>
         <div class="col-12">
