@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 	<?php include APPPATH . 'views\layout\head.php' ?>
 </head>
 
 <body>
-	<?= $contents ?>
-	<?php include APPPATH . 'views\layout\foot.php' ?>
+	<div id="content">
+		<?= $contents ?>
+		<?php include APPPATH . 'views\layoutElements\footer.php' ?>
+		<?php include APPPATH . 'views\layout\foot.php' ?>
+	</div>
 </body>
 
 <html>
