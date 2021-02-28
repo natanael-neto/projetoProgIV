@@ -13,7 +13,7 @@
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
             <h3 class="nomeDivisoria">SOBRE</h3>
-            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoria.svg" ?>">
+            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
     </div>
 
@@ -44,7 +44,7 @@
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
             <h3 class="nomeDivisoria">SERVIÇOS</h3>
-            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoria.svg" ?>">
+            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
     </div>
 
@@ -86,34 +86,38 @@
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
             <h3 class="nomeDivisoria">CONTATO</h3>
-            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoria.svg" ?>">
+            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
     </div>
     <!-- SEÇÃO 3 -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-md">
             <div class="socialBox whats">
                 <i class="fab fa-whatsapp"></i>
-                <p>Whatsapp: 81-900000000</p>
+                <p><b>Whatsapp:</b> 81-900000000</p>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-md">
             <div class="socialBox email">
                 <i class="fas fa-envelope"></i>
-                <p>Email: AcademiaSctrl@hotmail.com</p>
+                <p><b>Email:</b> AcademiaSctrl@hotmail.com</p>
             </div>
         </div>
-        <div class="col-12">
+    </div>
+
+    <div class="row SocialBottom">
+        <div class="col-md">
             <div class="socialBox linkdIn">
                 <i class="fab fa-linkedin-in"></i>
-                <p>LinkedIn: Academia SisCtrl</p>
+                <p><b>LinkedIn:</b> Academia SisCtrl</p>
             </div>
-            <div class="col-12">
-                <div class="socialBox insta">
-                    <i class="fab fa-instagram"></i>
-                    <p>Instagram: @AcademiaSctrl</p>
-                </div>
+        </div>
+        <div class="col-md">
+            <div class="socialBox insta">
+                <i class="fab fa-instagram"></i>
+                <p><b>Instagram:</b> @AcademiaSctrl</p>
             </div>
         </div>
     </div>
 </div>
+

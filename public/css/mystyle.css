@@ -1,5 +1,5 @@
 * {
-    font-family: 'Teko', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 html,
@@ -37,7 +37,7 @@ body {
 
 .ul-links>li {
     margin: 0 21px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -47,9 +47,9 @@ nav {
 }
 
 .logo {
-    margin-top: 20px;
-    width: 200px;
-    height: 100px;
+    margin-top: 1.5rem;
+    width: 8rem;
+    height: 6rem;
 }
 
 .jumb-image {
@@ -78,7 +78,7 @@ nav {
 .nomeDivisoria,
 .titulo-secao-1 {
     color: #192A51;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .divisoria {
@@ -117,52 +117,33 @@ nav {
 /* CONTATO */
 
 i {
-    color: #FCDFA6;
-    font-size: 35px;
+    color: #F1FFFA;
+    font-size: 60px;
     line-height: 60px;
+
 }
 
 .socialBox {
-    width: 70%;
+    width: 20rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: #21897E;
-    height: 60px;
+    height: 12rem;
     margin: 20px auto;
     border-radius: 5px;
     color: white;
+    flex-direction: column;
 }
 
-.insta>i {
-    cursor: pointer;
-    margin-right: 350px;
+.SocialBottom{
+    margin-bottom: 10rem;
 }
 
-.insta {
-    width: 72%;
-    margin: 40px auto;
-    cursor: pointer;
+.socialBox p{
+    font-size: 15px;
 }
 
-.email>i {
-    cursor: pointer;
-    margin-right: 280px;
-}
-
-.linkdIn>i {
-    cursor: pointer;
-    margin-right: 360px;
-}
-
-.whats>i {
-    margin-right: 350px;
-}
-
-.socialBox p {
-    font-size: 25px;
-    margin-top: 20px;
-}
 
 
 /* RESPONSIVO */
