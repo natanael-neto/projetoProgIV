@@ -12,7 +12,7 @@
     <!-- DIVISÓRIA -->
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
-            <h3 class="nomeDivisoria">SOBRE</h3>
+            <h3 class="nomeDivisoria">INFORME - SE</h3>
             <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
     </div>
