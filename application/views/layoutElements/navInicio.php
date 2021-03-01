@@ -1,5 +1,5 @@
 <nav style="background-color: #192A51; color: gray;" class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="<?= base_url() ?>"><img class="logo" src="public/imagens/logopng.png" alt=""></a>
+    <a class="navbar-brand" href="<?= base_url() ?>"><img class="logo" src="<?= base_url('public/imagens/logopng.png') ?>" alt="Logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
