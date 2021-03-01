@@ -47,7 +47,7 @@ nav {
 }
 
 .logo{
-    width: 30%;
+    width: 40%;
     height: 20%;
 }
 
@@ -132,7 +132,7 @@ i {
     height: 12rem;
     margin: 20px auto;
     border-radius: 5px;
-    color: white;
+    color: aliceblue;
     flex-direction: column;
 }
 
@@ -167,12 +167,19 @@ i {
 .botao-submit-login {
     background-color: #21897E;
     color: aliceblue;
+    font-weight: 600;
+}
+
+.botao-submit-login:hover {
+    background-color: aliceblue;
+    color: #21897E;
+    border: 1px solid #21897E;
 }
 
 footer {
     position: absolute;
     background-color: #192A51;
-    color: white;
+    color: aliceblue;
     height: 50px;
     font-size: 20px;
     bottom: 0;
@@ -181,7 +188,7 @@ footer {
 }
 
 footer i {
-    color: white;
+    color: aliceblue;
     font-size: 20px;
 }
 
