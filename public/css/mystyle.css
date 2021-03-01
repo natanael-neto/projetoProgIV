@@ -46,10 +46,9 @@ nav {
     width: 100%;
 }
 
-.logo {
-    margin-top: 1.5rem;
-    width: 8rem;
-    height: 6rem;
+.logo{
+    width: 30%;
+    height: 20%;
 }
 
 .jumb-image {
@@ -79,6 +78,7 @@ nav {
 .titulo-secao-1 {
     color: #192A51;
     font-size: 40px;
+    font-weight: bold;
 }
 
 .divisoria {
