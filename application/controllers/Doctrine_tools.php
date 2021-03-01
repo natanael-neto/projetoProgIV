@@ -53,15 +53,42 @@ class Doctrine_tools extends CI_Controller
                 );
 
                 $tool->updateSchema($classes);
-                //gerar proxies
+
                 $proxyFactory = $this->em->getProxyFactory();
                 $metadatas = $this->em->getMetadataFactory()->getAllMetadata();
                 $proxyFactory->generateProxyClasses($metadatas);
 
+
+                $this->alimentarTabelaUsuario();
+
                 echo 'Pronto';
-            } catch (Exception $e){
+            } catch (Exception $e) {
                 print $e;
             }
+        }
+    }
+
+    protected function alimentarTabelaUsuario()
+    {
+        $usuarioBLL = new \models\bll\UsuarioBLL();
+
+        $usuarios = $usuarioBLL->buscarTodos();
+
+        if (count($usuarios) == 0) {
+            $usuario = new \models\entidades\Usuario();
+            $perfil = new \models\entidades\Perfil();
+
+            $perfil->setNome('admin');
+
+            $usuario->setUsername('admin');
+            $usuario->setLogin('111.111.111-11');
+            $usuario->setPassword(md5('senhasegura'));
+            $usuario->setActive(true);
+            $usuario->setPerfil($perfil);
+
+            $this->doctrine->em->flush();
+
+            echo 'Criou usuário admin.' . '<br><br>';
         }
     }
 }
