@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Academia SISCTRL</title>
+<title><?= isset($titulo) ? $titulo : "Academia SISCtrl"?></title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . "public/css/bootstrap.min.css "?>">
