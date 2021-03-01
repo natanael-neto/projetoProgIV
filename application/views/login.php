@@ -7,18 +7,18 @@
         </div>
     </div>
 
-    <form>
+    <form action="<?= base_url('Login/logar') ?>" method="POST">
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
                     <p>CPF </p>
-                    <input type="text" id="cpf-login" class="form-control form-control-lg" placeholder="Digite seu CPF.">
+                    <input type="text" autocomplete="off" name="login" id="cpf-login" class="form-control form-control-lg" placeholder="Digite seu CPF.">
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <p>Senha </p>
-                    <input type="password" class="form-control form-control-lg" placeholder="Digite sua senha.">
+                    <input type="password" autocomplete="off" name="senha" class="form-control form-control-lg" placeholder="Digite sua senha.">
                 </div>
             </div>
             <div class="col-12">
@@ -26,6 +26,13 @@
                     <button type="submit" class="btn btn-lg botao-submit-login">ENTRAR</button>
                 </div>
             </div>
+            <?php if (!empty($this->session->flashdata('message'))) : ?>
+                <div class="col-12">
+                    <div class="alert alert-danger" role="alert">
+                        <?= $this->session->flashdata('message') ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </form>
 </div>
