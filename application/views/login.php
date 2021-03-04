@@ -1,4 +1,4 @@
-<?php include APPPATH . 'views\layoutElements\navInicio.php' ?>
+<?php include APPPATH . 'views\layoutElements\navWelcome.php' ?>
 
 <div class="container">
     <div class="row">

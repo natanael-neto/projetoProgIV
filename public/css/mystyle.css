@@ -24,7 +24,6 @@ body {
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 20px;
 }
 
 .botaoEntrar:hover,
@@ -35,20 +34,13 @@ body {
     border: 1px solid #21897E;
 }
 
-.ul-links>li {
-    margin: 0 21px;
-    font-size: 25px;
-    font-weight: 600;
-}
-
 nav {
-    max-height: 80px;
     width: 100%;
 }
 
-.logo{
-    width: 40%;
-    height: 20%;
+.logo {
+    max-width: 40%;
+    max-height: 20%;
 }
 
 .jumb-image {
@@ -120,7 +112,6 @@ i {
     color: #F1FFFA;
     font-size: 60px;
     line-height: 60px;
-
 }
 
 .socialBox {
@@ -136,25 +127,12 @@ i {
     flex-direction: column;
 }
 
-.SocialBottom{
+.SocialBottom {
     margin-bottom: 10rem;
 }
 
-.socialBox p{
+.socialBox p {
     font-size: 15px;
-}
-
-
-
-/* RESPONSIVO */
-
-@media only screen and (max-width: 991px) {
-    nav {
-        max-height: 80px;
-    }
-    .logo {
-        margin-top: -10px;
-    }
 }
 
 .main-title {
@@ -199,4 +177,18 @@ footer i {
 
 .grupo-footer {
     margin: 0;
+}
+
+.icon-botao-sair {
+    font-size: 14px;
+    margin-right: 13px;
+}
+
+.botao-sair {
+    font-weight: 600;
+}
+
+.nav-inicio-texto {
+    font-size: 20px;
+    color: aliceblue;
 }

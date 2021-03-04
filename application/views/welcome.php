@@ -1,4 +1,4 @@
-<?php include APPPATH . 'views\layoutElements\navInicio.php' ?>
+<?php include APPPATH . 'views\layoutElements\navWelcome.php' ?>
 
 <!-- IMAGEM SUPERIOR -->
 <div class="jumbotron jumb-image">
@@ -94,13 +94,13 @@
         <div class="col-md">
             <div class="socialBox whats">
                 <i class="fab fa-whatsapp"></i>
-                <p><b>Whatsapp:</b> 81-900000000</p>
+                <p><b>WHATSAPP:</b> 81-900000000</p>
             </div>
         </div>
         <div class="col-md">
             <div class="socialBox email">
                 <i class="fas fa-envelope"></i>
-                <p><b>Email:</b> AcademiaSctrl@hotmail.com</p>
+                <p><b>E-MAIL:</b> ACADEMIASISCTRL@EMAIL.COM</p>
             </div>
         </div>
     </div>
@@ -109,13 +109,13 @@
         <div class="col-md">
             <div class="socialBox linkdIn">
                 <i class="fab fa-linkedin-in"></i>
-                <p><b>LinkedIn:</b> Academia SisCtrl</p>
+                <p><b>LINKEDIN:</b> ACADEMIA SISCTRL</p>
             </div>
         </div>
         <div class="col-md">
             <div class="socialBox insta">
                 <i class="fab fa-instagram"></i>
-                <p><b>Instagram:</b> @AcademiaSctrl</p>
+                <p><b>INSTAGRAM:</b> @ACADEMIASISCTRL</p>
             </div>
         </div>
     </div>
