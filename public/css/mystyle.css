@@ -26,9 +26,26 @@ body {
     padding-right: 20px;
 }
 
+.botaoSair {
+    background-color: #C1222B;
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0 20px;
+}
+
+.botaoSair:hover {
+    background: #fff;
+    border: 2px solid #C1222B;
+    color: #c1222b;
+}
+
 .botaoEntrar:hover,
 .botao-background:hover,
-.jumb-botao:hover {
+.jumb-botao:hover,
+.botao-submit-login:hover {
     background-color: aliceblue;
     color: #21897E;
     border: 1px solid #21897E;
@@ -133,6 +150,30 @@ i {
 
 .socialBox p {
     font-size: 15px;
+}
+
+
+/* VIEW ALUNO */
+
+.MensagemInicio {
+    display: flex;
+    margin: 5rem 0 6rem;
+    justify-content: center;
+}
+
+.MensagemInicio strong {
+    color: #21897E;
+}
+
+.AlunoPressets h2 {
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+
+.AlunoPressets h5 {
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: #696969;
 }
 
 .main-title {
