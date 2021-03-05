@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <a href="<?= base_url('Login') ?>" class="btn btn-sm botaoSair">
+        <a href="<?= base_url('Login/deslogar') ?>" class="btn btn-sm botaoSair">
             Sair
         </a>
     </div>

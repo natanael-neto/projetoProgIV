@@ -4,6 +4,14 @@ class Login extends CI_Controller
 {
     public function index()
     {
+        if (isset($_SESSION['logado']) && $_SESSION['logado'] == 1) {
+            if (perfilUsuario($_SESSION['login']) == 'aluno'){
+                redirect('Aluno');
+            } else {
+                redirect('Inicio');
+            }
+        }
+
         $data['titulo'] = "Login";
         $this->template->load('template', 'login', $data);
     }
@@ -32,7 +40,11 @@ class Login extends CI_Controller
             } else {
                 $_SESSION['logado'] = 1;
                 $_SESSION['login'] = $usuario->getLogin();
-                redirect('Inicio');
+                if ($usuario->getPerfil()->getNome() == "aluno"){
+                    redirect('Aluno');
+                } else {
+                    redirect('Inicio');
+                }
             }
         } catch (\Exception $e) {
             die("Ocorreu um erro.");
