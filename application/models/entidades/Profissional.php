@@ -55,7 +55,6 @@ class Profissional extends Entidade
      */
     protected $saidaJornada;
 
-
     /**
      * @var \DateTime
      * @Column(type="datetime", nullable=false)

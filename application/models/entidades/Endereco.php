@@ -2,8 +2,6 @@
 
 namespace models\entidades;
 
-use models\negocio\PaisBLL;
-
 /**
  * @Entity @Table(name="endereco")
  **/
