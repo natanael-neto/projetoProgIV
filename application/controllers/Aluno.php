@@ -5,6 +5,6 @@ class Aluno extends MY_Controller
 {
 	public function index()
 	{
-		$this->template->load('template', 'aluno');
+		$this->template->load('template', 'inicio/inicioAluno');
 	}
 }

@@ -5,6 +5,6 @@ class Welcome extends CI_Controller
 {
 	public function index()
 	{
-		$this->template->load('template', 'welcome');
+		$this->template->load('template', 'inicio/welcome');
 	}
 }

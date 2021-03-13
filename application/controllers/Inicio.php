@@ -9,6 +9,6 @@ class Inicio extends MY_Controller
 			redirect("Aluno");
 		}
 		
-		$this->template->load('template', 'inicio');
+		$this->template->load('template', 'inicio/inicio');
 	}
 }

@@ -13,7 +13,7 @@ class Login extends CI_Controller
         }
 
         $data['titulo'] = "Login";
-        $this->template->load('template', 'login', $data);
+        $this->template->load('template', 'login/login', $data);
     }
 
     function mostrarMensagem($message)

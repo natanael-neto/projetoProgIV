@@ -8,6 +8,6 @@
 <link href="<?= base_url('public/FontAwesome/css/all.css')?>" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
-<link rel="shortcut icon" type="imagex/png" href="public/imagens/icon.ico">
+<link rel="shortcut icon" type="imagex/png" href="<?= base_url('public/imagens/icon.ico')?>">
 
 
