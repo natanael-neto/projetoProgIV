@@ -5,7 +5,7 @@
     <h1 class="display-4 jumb-titulo">ACADEMIA SISCTRL</h1>
     <h1 class="display-6 jumb-descricao">A MELHOR ACADEMIA DA CIDADE</h1>
     <hr style="background-color: gray" class="my-4">
-    <a class="btn btn-lg jumb-botao" href="#" role="button">CONHEÇA NOSSOS SERVIÇOS</a>
+    <a class="btn btn-lg jumb-botao" href="<?= base_url('Login') ?>" role="button">É NOSSO ALUNO? AGENDE JÁ SUA AULA!</a>
 </div>
 
 <div style="margin-top: 30px" class="container secao">

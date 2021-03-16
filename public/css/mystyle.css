@@ -272,3 +272,20 @@ footer i {
     color: #21897E;
     font-weight: 700;
 }
+
+.link-acoes {
+    font-weight: 700;
+}
+
+.requerido .required:before {
+    content: '* ';
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.requerido .required:before {
+    position: absolute;
+    left: 3px;
+    top: 2px;
+}

@@ -25,7 +25,7 @@
         <div class="navbar-collapse collapse show" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li style="margin: 0 5%" class="nav-item">
-                    <a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link a-link active" href="#">HOME</a>
+                    <a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link a-link active" href="<?= base_url('Inicio') ?>">HOME</a>
                 </li>
                 <li style="margin: 0 5%" class="nav-item dropdown">
                     <a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link dropdown-toggle a-link" href="#" id="dropdown-cadastros" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

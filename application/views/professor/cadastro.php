@@ -4,8 +4,10 @@
             <span class="titulo-page-cadastro">CADASTRAR PROFESSOR</span>
         </div>
     </div>
+    <div style="display: none" class="alert alert-dismissible fade show retorno-erro" role="alert">
+    </div>
     <hr>
-    <form autocomplete="off">
+    <form id="form-professores" autocomplete="off">
         <div class="row row-form">
             <div class="col col-12 title-form">
                 DADOS:
@@ -20,7 +22,7 @@
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-email">E-MAIL</label>
-                <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" name="email">
             </div>
         </div>
         <div class="row row-form">
@@ -76,17 +78,63 @@
             </div>
         </div>
         <div class="row row-form">
-            <div class="col col-lg-12 col-xs-12">
+            <div class="col col-lg-9 col-xs-9">
                 <label for="input-pontoReferencia">PONTO DE REFERÊNCIA</label>
                 <input type="text" class="form-control" id="input-pontoReferencia" name="pontoReferencia">
+            </div>
+            <div class="col col-lg-3 col-xs-3">
+                <label for="input-cep">CEP</label>
+                <input type="text" class="form-control" id="input-cep" name="cep">
             </div>
         </div>
         <div style="text-align: end;" class="row row-form">
             <div class="col col-12">
-                <button type="button" class="btn btn-success btn-md">
+                <button type="button" id="botao-salvar" class="btn btn-success btn-md">
                     SALVAR
                 </button>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    function onReady() {
+
+        $('.nav-link').removeClass('active');
+        $('.professores-link').addClass('active');
+        $('#dropdown-cadastros').addClass('active');
+
+        $('.nav-link').click(function() {
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('#botao-salvar').click(function() {
+            var form = $('#form-professores').serialize();
+
+            $.post('<?= base_url('Professores/cadastroAction') ?>', form, function(retorno) {
+                if (retorno.erro) {
+                    $('.retorno-erro').html("");
+                    $('.retorno-erro').addClass('alert-warning');
+                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}\
+                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
+                                                <span aria-hidden='true'>&times;</span>\
+                                            </button>`);
+                    $('.retorno-erro').show();
+                } else {
+                    $('.retorno-erro').html("");
+                    if ($('.retorno-erro').hasClass('alert-warning')) {
+                        $('.retorno-erro').removeClass('alert-warning');
+                    }
+                    $('.retorno-erro').addClass('alert-success');
+                    $('.retorno-erro').html(`${retorno.mensagem}\
+                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
+                                                <span aria-hidden='true'>&times;</span>\
+                                            </button>`);
+                    $('.retorno-erro').show();
+                    $('#form-professores input').val("");
+                }
+            }, "json");
+        });
+    }
+</script>
