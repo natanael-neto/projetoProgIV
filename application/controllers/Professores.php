@@ -4,10 +4,26 @@ class Professores extends MY_Controller
 {
     public function index()
     {
+     
         $professorBLL = new \models\bll\ProfessorBLL();
 
+        $offset = 0;
+        if (!empty($_GET['per_page']) && is_numeric($_GET['per_page'])) {
+            $offset = $_GET['per_page'];
+        }
+        
+        $this->load->library('pagination');
         $data['titulo'] = "Professores";
-        $data['professores'] = $professorBLL->buscarTodos();
+        $data['professores'] = $professorBLL->consultarPaginado($offset, $this->pagination->per_page = 5);
+
+        $get = $_GET;
+        unset($get['per_page']);
+
+        $config['base_url'] = site_url('Professores?' . http_build_query($get));
+        $config['total_rows'] = $data['professores']->count();
+        $config['page_query_string'] = TRUE;
+
+        $this->pagination->initialize($config);
 
         $this->template->load('templateInterno', 'professor/index', $data);
     }
@@ -23,7 +39,7 @@ class Professores extends MY_Controller
         try {
 
             $retorno = array('erro' => true);
-            
+
             // Validações
             if (empty($_POST['nome'])) {
                 throw new Exception("Por favor, digite um nome.");
@@ -53,7 +69,7 @@ class Professores extends MY_Controller
                 throw new Exception("Por favor, digite um logradouro.");
             }
 
-            if (empty($_POST['numero'])) {
+            if (empty($_POST['numero']) || !is_numeric($_POST['numero'])) {
                 throw new Exception("Por favor, digite o número do seu endereço.");
             }
 
@@ -81,7 +97,7 @@ class Professores extends MY_Controller
                 throw new Exception("Por favor, digite um ponto de referência.");
             }
 
-            if (empty($_POST['cep']) || !is_numeric($_POST['cep'])) {
+            if (empty($_POST['cep'])) {
                 throw new Exception("Por favor, digite um CEP válido.");
             }
 
@@ -105,9 +121,9 @@ class Professores extends MY_Controller
             $professor->setDataNascimento(dataStrToObject($_POST['dataNascimento']));
             $professor->setCref($_POST['cref']);
             $professor->setEndereco($endereco);
-            
+
             $this->doctrine->em->flush();
-            
+
             $retorno["erro"] = false;
             $retorno["mensagem"] = "<strong>Sucesso!</strong> Cadastro realizado.";
         } catch (Exception $e) {

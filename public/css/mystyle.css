@@ -289,3 +289,21 @@ footer i {
     left: 3px;
     top: 2px;
 }
+
+.active-sisctrl .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #21897E;
+    border-color: #fff;
+}
+
+.page-link-sisctrl {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #192A51;
+    background-color: #fff;
+    border: 1px solid #dee2e6
+}

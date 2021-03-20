@@ -99,7 +99,7 @@
 
 <script>
     function onReady() {
-
+        // marcação no dropdown
         $('.nav-link').removeClass('active');
         $('.professores-link').addClass('active');
         $('#dropdown-cadastros').addClass('active');
@@ -109,6 +109,13 @@
             $(this).addClass('active');
         });
 
+        // máscaras
+        $('#input-cpf').mask("999.999.999-99");
+        $('#input-telefone').mask("(99) 99999-9999");
+        $('#input-data-nascimento').mask("99/99/9999");
+        $('#input-cep').mask("99.999-999");
+    
+        // submit do form
         $('#botao-salvar').click(function() {
             var form = $('#form-professores').serialize();
 
