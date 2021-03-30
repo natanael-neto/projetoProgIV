@@ -43,16 +43,23 @@ class Alunos extends MY_Controller
 
 	public function cadastro()
 	{
+		$planoBLL = new PlanoBLL();
+
 		$data['titulo'] = "Alunos";
+		$data['planos'] = $planoBLL->buscarTodos();
+
 		$this->template->load('templateInterno', 'aluno/cadastro', $data);
 	}
 
 	public function editar($id)
 	{
 		$alunoBLL = new AlunoBLL();
+		$planoBLL = new PlanoBLL();
 
-		$data['aluno'] = $alunoBLL->buscarPorId($id);
 		$data['titulo'] = "Alunos";
+		$data['planos'] = $planoBLL->buscarTodos();
+		$data['aluno'] = $alunoBLL->buscarPorId($id);
+
 		$this->template->load('templateInterno', 'aluno/cadastro', $data);
 	}
 

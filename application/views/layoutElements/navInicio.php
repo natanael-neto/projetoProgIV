@@ -16,7 +16,7 @@
 
 <div class="div-external-nav">
     <nav style="background-color: #192A51; color: gray;" class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a style="margin-right: 0" class="navbar-brand" target="_blank" href="http://www.google.com.br">
+        <a style="margin-right: 0" class="navbar-brand" href="<?= base_url('Inicio') ?>">
             <img class="logo" src="<?= base_url('public/imagens/logopng.png') ?>">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
@@ -42,10 +42,10 @@
                         OPERACIONAL
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item drop-a agendamentos-link" href="#">AGENDAMENTOS</a>
-                        <a class="dropdown-item drop-a modalidades-link" href="#">MODALIDADES</a>
-                        <a class="dropdown-item drop-a planos-link" href="#">PLANOS</a>
-                        <a class="dropdown-item drop-a aulas-link" href="#">AULAS</a>
+                        <a class="dropdown-item drop-a agendamentos-link" href="<?= base_url('Agendamentos') ?>">AGENDAMENTOS</a>
+                        <a class="dropdown-item drop-a modalidades-link" href="<?= base_url('Modalidades') ?>">MODALIDADES</a>
+                        <a class="dropdown-item drop-a planos-link" href="<?= base_url('Planos') ?>">PLANOS</a>
+                        <a class="dropdown-item drop-a aulas-link" href="<?= base_url('Aulas') ?>">AULAS</a>
                     </div>
                 </li>
             </ul>

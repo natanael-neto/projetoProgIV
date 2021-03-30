@@ -15,7 +15,7 @@ class Modalidade extends Entidade
 
     /**
      * @var string
-     * @Column(type="string", length=255, nullable=false)
+     * @Column(type="string", length=500, nullable=false)
      */
     protected $descricao;
 
