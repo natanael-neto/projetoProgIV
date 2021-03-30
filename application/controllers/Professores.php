@@ -54,6 +54,15 @@ class Professores extends MY_Controller
     public function cadastroAction()
     {
         try {
+            if ($_POST['id']) {
+                $professorBLL = new ProfessorBLL();
+
+                $professor = $professorBLL->buscarPorId($_POST['id']);
+                $endereco = $professor->getEndereco();
+            } else {
+                $professor = new \models\entidades\Professor();
+                $endereco = new \models\entidades\Endereco();
+            }
 
             $retorno = array('erro' => true);
 
@@ -118,10 +127,7 @@ class Professores extends MY_Controller
                 throw new Exception("Por favor, digite um CEP válido.");
             }
 
-            $professor = new \models\entidades\Professor();
-            $endereco = new \models\entidades\Endereco();
-
-            $endereco->setLogradouro($_POST['nome']);
+            $endereco->setLogradouro($_POST['logradouro']);
             $endereco->setNumero($_POST['numero']);
             $endereco->setCidade($_POST['cidade']);
             $endereco->setEstado($_POST['estado']);
