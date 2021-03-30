@@ -15,7 +15,7 @@ class BaseBLL {
     protected $db;
     /** @var EntityManager */
     protected $em;
-    /** @var \CI_Controller|\MY_Controller|\API_Controller */
+    /** @var \CI_Controller|\MY_Controller */
     protected $instance;
     protected $nomeEntidade;
 

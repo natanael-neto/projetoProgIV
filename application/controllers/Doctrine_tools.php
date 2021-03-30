@@ -59,6 +59,7 @@ class Doctrine_tools extends CI_Controller
                 $proxyFactory->generateProxyClasses($metadatas);
 
 
+                $this->alimentarTabelaPerfil();
                 $this->alimentarTabelaUsuario();
 
                 echo 'Pronto';
@@ -68,27 +69,56 @@ class Doctrine_tools extends CI_Controller
         }
     }
 
+    protected function alimentarTabelaPerfil()
+    {
+        $perfilBLL = new \models\bll\PerfilBLL();
+
+        $perfis = $perfilBLL->buscarTodos();
+
+        if (count($perfis) == 0) {
+            $perfilAluno = new \models\entidades\Perfil();
+            $perfilFuncionario = new \models\entidades\Perfil();
+            $perfilAdmin = new \models\entidades\Perfil();
+
+            $perfilFuncionario->setNome('funcionario');
+            $perfilAluno->setNome('aluno');
+            $perfilAdmin->setNome('admin');
+
+            $this->doctrine->em->flush();
+
+            echo '<br><br>' . 'Criou os perfis.' . '<br><br>';
+        }
+    }
+
     protected function alimentarTabelaUsuario()
     {
         $usuarioBLL = new \models\bll\UsuarioBLL();
+        $perfilBLL = new \models\bll\PerfilBLL();
 
         $usuarios = $usuarioBLL->buscarTodos();
 
         if (count($usuarios) == 0) {
-            $usuario = new \models\entidades\Usuario();
-            $perfil = new \models\entidades\Perfil();
+            $usuarioAdmin = new \models\entidades\Usuario();
+            $usuarioAluno = new \models\entidades\Usuario();
 
-            $perfil->setNome('admin');
+            $perfilAdmin = $perfilBLL->buscarUmPor(array('nome' => 'admin'));
+            $perfilAluno = $perfilBLL->buscarUmPor(array('nome' => 'aluno'));
 
-            $usuario->setUsername('admin');
-            $usuario->setLogin('111.111.111-11');
-            $usuario->setPassword(md5('facol123'));
-            $usuario->setActive(true);
-            $usuario->setPerfil($perfil);
+            $usuarioAluno->setUsername('aluno');
+            $usuarioAluno->setLogin('222.222.222-22');
+            $usuarioAluno->setPassword(md5('facol123'));
+            $usuarioAluno->setActive(true);
+            $usuarioAluno->setPerfil($perfilAluno);
+
+            $usuarioAdmin->setUsername('admin');
+            $usuarioAdmin->setLogin('111.111.111-11');
+            $usuarioAdmin->setPassword(md5('facol123'));
+            $usuarioAdmin->setActive(true);
+            $usuarioAdmin->setPerfil($perfilAdmin);
 
             $this->doctrine->em->flush();
 
-            echo 'Criou usuário admin.' . '<br><br>';
+            echo 'Criou usuários admin e aluno para teste.' . '<br><br>';
         }
     }
 }

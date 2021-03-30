@@ -33,8 +33,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item drop-a professores-link" href="<?= base_url('Professores') ?>">PROFESSORES</a>
-                        <a class="dropdown-item drop-a alunos-link" href="#">ALUNOS</a>
-                        <a class="dropdown-item drop-a funcionarios-link" href="#">FUNCIONÁRIOS</a>
+                        <a class="dropdown-item drop-a alunos-link" href="<?= base_url('Alunos') ?>">ALUNOS</a>
+                        <a class="dropdown-item drop-a funcionarios-link" href="<?= base_url('Funcionarios') ?>">FUNCIONÁRIOS</a>
                     </div>
                 </li>
                 <li style="margin: 0 5%" class="nav-item dropdown">

@@ -6,7 +6,7 @@ class Login extends CI_Controller
     {
         if (isset($_SESSION['logado']) && $_SESSION['logado'] == 1) {
             if (perfilUsuario($_SESSION['login']) == 'aluno'){
-                redirect('Aluno');
+                redirect('AlunosAgendamento');
             } else {
                 redirect('Inicio');
             }
@@ -41,7 +41,7 @@ class Login extends CI_Controller
                 $_SESSION['logado'] = 1;
                 $_SESSION['login'] = $usuario->getLogin();
                 if ($usuario->getPerfil()->getNome() == "aluno"){
-                    redirect('Aluno');
+                    redirect('AlunosAgendamento');
                 } else {
                     redirect('Inicio');
                 }

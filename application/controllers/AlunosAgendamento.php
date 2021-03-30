@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Aluno extends MY_Controller
+class AlunosAgendamento extends MY_Controller
 {
 	public function index()
 	{

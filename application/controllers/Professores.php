@@ -2,6 +2,10 @@
 
 use models\bll\ProfessorBLL;
 use models\bll\EnderecoBLL;
+use models\bll\AulaBLL;
+use \models\entidades\Professor;
+use \models\entidades\Endereco;
+
 
 defined('BASEPATH') or exit('No direct script access allowed');
 class Professores extends MY_Controller
@@ -10,7 +14,7 @@ class Professores extends MY_Controller
     {
 
         if ($this->usuarioLogado->getPerfil()->getNome() == 'aluno') {
-            redirect("Aluno");
+            redirect("AlunosAgendamento");
         }
 
         $professorBLL = new ProfessorBLL();
@@ -60,8 +64,8 @@ class Professores extends MY_Controller
                 $professor = $professorBLL->buscarPorId($_POST['id']);
                 $endereco = $professor->getEndereco();
             } else {
-                $professor = new \models\entidades\Professor();
-                $endereco = new \models\entidades\Endereco();
+                $professor = new Professor();
+                $endereco = new Endereco();
             }
 
             $retorno = array('erro' => true);
@@ -166,6 +170,13 @@ class Professores extends MY_Controller
             }
             $enderecoBLL = new EnderecoBLL();
             $professorBLL = new ProfessorBLL();
+            $aulaBLL = new AulaBLL();
+
+            $aulas = $aulaBLL->consultar("p.id = {$id}", null, "JOIN e.professor p");
+
+            if (count($aulas) > 0) {
+                throw new Exception('Este professor está cadastrado em aula. Por favor, transfira as aulas para outro professor.');
+            }
 
             $professor = $professorBLL->buscarPorId($id);
 
