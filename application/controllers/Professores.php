@@ -1,20 +1,28 @@
 <?php
+
+use models\bll\ProfessorBLL;
+use models\bll\EnderecoBLL;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 class Professores extends MY_Controller
 {
     public function index()
     {
-     
-        $professorBLL = new \models\bll\ProfessorBLL();
+
+        if ($this->usuarioLogado->getPerfil()->getNome() == 'aluno') {
+            redirect("Aluno");
+        }
+
+        $professorBLL = new ProfessorBLL();
 
         $offset = 0;
         if (!empty($_GET['per_page']) && is_numeric($_GET['per_page'])) {
             $offset = $_GET['per_page'];
         }
-        
+
         $this->load->library('pagination');
         $data['titulo'] = "Professores";
-        $data['professores'] = $professorBLL->consultarPaginado($offset, $this->pagination->per_page = 5);
+        $data['professores'] = $professorBLL->consultarPaginado($offset, $this->pagination->per_page = 15);
 
         $get = $_GET;
         unset($get['per_page']);
@@ -30,6 +38,15 @@ class Professores extends MY_Controller
 
     public function cadastro()
     {
+        $data['titulo'] = "Professores";
+        $this->template->load('templateInterno', 'professor/cadastro', $data);
+    }
+
+    public function editar($id)
+    {
+        $professorBLL = new ProfessorBLL();
+
+        $data['professor'] = $professorBLL->buscarPorId($id);
         $data['titulo'] = "Professores";
         $this->template->load('templateInterno', 'professor/cadastro', $data);
     }
@@ -126,6 +143,33 @@ class Professores extends MY_Controller
 
             $retorno["erro"] = false;
             $retorno["mensagem"] = "<strong>Sucesso!</strong> Cadastro realizado.";
+        } catch (Exception $e) {
+            $retorno["mensagem"] = $e->getMessage();
+        }
+
+        die(json_encode($retorno));
+    }
+
+    public function excluir($id = null)
+    {
+        try {
+            $retorno = array('erro' => true);
+
+            if (empty($id)) {
+                throw new Exception('ID inválido.');
+            }
+            $enderecoBLL = new EnderecoBLL();
+            $professorBLL = new ProfessorBLL();
+
+            $professor = $professorBLL->buscarPorId($id);
+
+            $enderecoBLL->removerPorId($professor->getEndereco()->getId());
+            $professorBLL->removerPorId($professor->getId());
+
+            $this->doctrine->em->flush();
+
+            $retorno["erro"] = false;
+            $retorno["mensagem"] = "<strong>Sucesso!</strong> Excluído com sucesso.";
         } catch (Exception $e) {
             $retorno["mensagem"] = $e->getMessage();
         }

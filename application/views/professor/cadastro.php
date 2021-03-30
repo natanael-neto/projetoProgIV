@@ -14,29 +14,29 @@
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-nome">NOME</label>
-                <input type="text" class="form-control" id="input-nome" name="nome">
+                <input value="<?= $professor ? $professor->getNome() : "" ?>" type="text" class="form-control" id="input-nome" name="nome">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-cpf">CPF</label>
-                <input type="text" class="form-control" id="input-cpf" name="cpf">
+                <input value="<?= $professor ? $professor->getCpf() : "" ?>" type="text" class="form-control" id="input-cpf" name="cpf">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-email">E-MAIL</label>
-                <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" name="email">
+                <input value="<?= $professor ? $professor->getEmail() : "" ?>" type="email" class="form-control" id="input-email" aria-describedby="emailHelp" name="email">
             </div>
         </div>
         <div class="row row-form">
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-telefone">TELEFONE</label>
-                <input type="text" class="form-control" id="input-telefone" name="telefone">
+                <input value="<?= $professor ? $professor->getTelefone() : "" ?>" type="text" class="form-control" id="input-telefone" name="telefone">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-data-nascimento">DATA DE NASCIMENTO</label>
-                <input type="text" class="form-control" id="input-data-nascimento" name="dataNascimento">
+                <input value="<?= $professor ? $professor->getDataNascimento()->format('d/m/Y') : "" ?>"  type="text" class="form-control" id="input-data-nascimento" name="dataNascimento">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-cref">CREF</label>
-                <input type="text" class="form-control" id="input-cref" name="cref">
+                <input value="<?= $professor ? $professor->getCref() : "" ?>" type="text" class="form-control" id="input-cref" name="cref">
             </div>
         </div>
         <hr>
@@ -46,45 +46,45 @@
             </div>
             <div class="col col-lg-10 col-xs-12">
                 <label for="input-logradouro">LOGRADOURO</label>
-                <input type="text" class="form-control" id="input-logradouro" name="logradouro">
+                <input value="<?= $professor ? $professor->getEndereco()->getLogradouro() : "" ?>" type="text" class="form-control" id="input-logradouro" name="logradouro">
             </div>
             <div class="col col-lg-2 col-xs-12">
                 <label for="input-numero">NÚMERO</label>
-                <input type="text" class="form-control" id="input-numero" name="numero">
+                <input value="<?= $professor ? $professor->getEndereco()->getNumero() : "" ?>" type="text" class="form-control" id="input-numero" name="numero">
             </div>
         </div>
         <div class="row row-form">
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-cidade">CIDADE</label>
-                <input type="text" class="form-control" id="input-cidade" name="cidade">
+                <input value="<?= $professor ? $professor->getEndereco()->getCidade() : "" ?>" type="text" class="form-control" id="input-cidade" name="cidade">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-estado">ESTADO</label>
-                <input type="text" class="form-control" id="input-estado" name="estado">
+                <input value="<?= $professor ? $professor->getEndereco()->getEstado() : "" ?>" type="text" class="form-control" id="input-estado" name="estado">
             </div>
             <div class="col col-lg-4 col-xs-12">
                 <label for="input-pais">PAÍS</label>
-                <input type="text" class="form-control" id="input-pais" name="pais">
+                <input value="<?= $professor ? $professor->getEndereco()->getPais() : "" ?>" type="text" class="form-control" id="input-pais" name="pais">
             </div>
         </div>
         <div class="row row-form">
             <div class="col col-lg-6 col-xs-12">
                 <label for="input-bairro">BAIRRO</label>
-                <input type="text" class="form-control" id="input-bairro" name="bairro">
+                <input value="<?= $professor ? $professor->getEndereco()->getBairro() : "" ?>" type="text" class="form-control" id="input-bairro" name="bairro">
             </div>
             <div class="col col-lg-6 col-xs-12">
                 <label for="input-complemento">COMPLEMENTO</label>
-                <input type="text" class="form-control" id="input-complemento" name="complemento">
+                <input value="<?= $professor ? $professor->getEndereco()->getComplemento() : "" ?>" type="text" class="form-control" id="input-complemento" name="complemento">
             </div>
         </div>
         <div class="row row-form">
             <div class="col col-lg-9 col-xs-9">
                 <label for="input-pontoReferencia">PONTO DE REFERÊNCIA</label>
-                <input type="text" class="form-control" id="input-pontoReferencia" name="pontoReferencia">
+                <input value="<?= $professor ? $professor->getEndereco()->getPontoReferencia() : "" ?>" type="text" class="form-control" id="input-pontoReferencia" name="pontoReferencia">
             </div>
             <div class="col col-lg-3 col-xs-3">
                 <label for="input-cep">CEP</label>
-                <input type="text" class="form-control" id="input-cep" name="cep">
+                <input value="<?= $professor ? $professor->getEndereco()->getCep() : "" ?>" type="text" class="form-control" id="input-cep" name="cep">
             </div>
         </div>
         <div style="text-align: end;" class="row row-form">
@@ -114,7 +114,7 @@
         $('#input-telefone').mask("(99) 99999-9999");
         $('#input-data-nascimento').mask("99/99/9999");
         $('#input-cep').mask("99.999-999");
-    
+
         // submit do form
         $('#botao-salvar').click(function() {
             var form = $('#form-professores').serialize();

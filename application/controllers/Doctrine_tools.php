@@ -82,7 +82,7 @@ class Doctrine_tools extends CI_Controller
 
             $usuario->setUsername('admin');
             $usuario->setLogin('111.111.111-11');
-            $usuario->setPassword(md5('senhasegura'));
+            $usuario->setPassword(md5('facol123'));
             $usuario->setActive(true);
             $usuario->setPerfil($perfil);
 

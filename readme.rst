@@ -1,3 +1,20 @@
+Informações para configurar o ambiente do projeto:
+
+1º - Possuir um servidor local (de preferência o XAMPP PHP 7.0) para habilitar um servidor para rodar o projeto PHP. 
+2º - Possuir o Mysql Workbench ou qualquer outro gerenciador de banco de dados Mysql.
+3º - Criar um schema vazio dentro do seu gerenciador de banco de dados.
+4º - Caso tenha o XAMPP, fazer o download do projeto na pasta htdocs que fica dentro da pasta do XAMPP.
+5º - Após fazer o download do projeto, ir em application/config/ e será encontrado um arquivo chamado database.php.example. Você irá fazer uma cópia desse arquivo dentro
+da pasta, e renomea-lo para database.php. Pode manter o database.php.example na pasta pois ele está referenciado no .gitignore.
+6º - No arquivo database.php, configurar o seu banco de dados. (hostname, username, password e database, apenas esses 4 campos).
+7º - O padrão de URL do XAMPP é: localhost/{pastaDoProjeto}/{controller}.
+8º - Você vai em application/config/config.php e edita na linha 26 a base url, onde você vai trocar 'projetoProgIV' pelo nome da pasta que está o projeto dentro do htdocs.
+9º - Após isso, ao acessar localhost/{pastaDoProjeto} o projeto já deve estar funcionando.
+10º - Caso ele esteja, acesse: localhost/{pastaDoProjeto}/Doctrine_Tools e clique em 'atualizar banco'. Ao fazer isso, o controller Doctrine_Tools irá criar todas as tabelas
+no seu banco de dados que foi configurado previamente.
+11º - Assim, o projeto estará em perfeita condições.
+12º - O usuário admin é o: 111.111.111-11. Senha: facol123.
+ 
 ###################
 What is CodeIgniter
 ###################
