@@ -97,3 +97,27 @@ function dataObjectToStr(DateTime $dateTime, $comHora = false)
 
     return $strDate;
 }
+
+function removerMaskmoney($valor)
+{
+    if (!is_null($valor)) {
+        return floatval(trim(preg_replace(array('/[.]/', '/,/', '/ [^0-9]+/'), array('', '.', ''), str_replace('R$', '', $valor))));
+    }
+
+    return null;
+}
+
+function removerMask($valor)
+{
+    return trim(preg_replace(array('/[.]/', '/,/', '/ +/', '/\(/', '/\)/', '/-/', '/\//'), '', $valor));
+}
+
+function formatar_dinheiro($valor, $precision = 2, $dec_point = ',', $thousands_sep = '.')
+{
+    return 'R$ ' . number_format($valor, $precision, $dec_point, $thousands_sep);
+}
+
+function formatar_decimal($valor, $precision = 2)
+{
+    return number_format($valor, $precision, ',', '.');
+}

@@ -20,6 +20,18 @@ class Modalidade extends Entidade
     protected $descricao;
 
     /**
+     * @var mixed
+     * @ManyToMany(targetEntity="Plano", mappedBy="modalidades", cascade={"persist", "remove"})
+     */
+    protected $planos;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->planos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * @return string
      */
     public function getNome()
@@ -49,5 +61,21 @@ class Modalidade extends Entidade
     public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlanos()
+    {
+        return $this->planos;
+    }
+
+    /**
+     * @param mixed $planos
+     */
+    public function setPlanos($planos)
+    {
+        $this->planos = $planos;
     }
 }

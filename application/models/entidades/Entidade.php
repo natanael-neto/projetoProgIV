@@ -1,8 +1,6 @@
 <?php
 
 namespace models\entidades;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\PersistentCollection;
 
 /** @MappedSuperclass
  * @HasLifecycleCallbacks

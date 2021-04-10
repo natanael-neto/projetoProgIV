@@ -178,6 +178,7 @@ class Alunos extends MY_Controller
 	public function excluir($id = null)
 	{
 		try {
+			
 			$retorno = array('erro' => true);
 
 			if (empty($id)) {
@@ -186,8 +187,8 @@ class Alunos extends MY_Controller
 			$enderecoBLL = new EnderecoBLL();
 			$alunoBLL = new AlunoBLL();
 			$agendamentoBLL = new AgendamentoBLL();
-
-			$agendamentos = $agendamentoBLL->consultar("a.id = {$id}", null, 'e.aluno a');
+			
+			$agendamentos = $agendamentoBLL->consultar("a.id = {$id}", null, 'JOIN e.aluno a');
 			$agendamentoBLL->removerTodos($agendamentos);
 
 			$aluno = $alunoBLL->buscarPorId($id);

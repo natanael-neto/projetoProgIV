@@ -1,6 +1,5 @@
 <?php
 
-use models\entidades\Configuracao;
 use models\entidades\Usuario;
 
 

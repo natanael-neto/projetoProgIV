@@ -26,10 +26,11 @@ class Plano extends Entidade
     protected $descricao;
 
     /** 
-     * @ManyToMany(targetEntity="Modalidade")
+     * @var Modalidade
+     * @ManyToMany(targetEntity="Modalidade", inversedBy="planos")
      * @JoinTable(name="plano_modalidades",
-     *      joinColumns={@JoinColumn(name="plano_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="modalidade", referencedColumnName="id", unique=true)}
+     *      joinColumns={@JoinColumn(name="plano_id", referencedColumnName="id", unique=false)},
+     *      inverseJoinColumns={@JoinColumn(name="modalidade_id", referencedColumnName="id", unique=false)}
      *      )
      */
     protected $modalidades;
@@ -72,7 +73,7 @@ class Plano extends Entidade
     }
 
     /**
-     * @return Modalidade[]|@mixed
+     * @return Modalidade
      */
     public function getModalidades()
     {
@@ -80,11 +81,11 @@ class Plano extends Entidade
     }
 
     /**
-     * @param Modalidade $modalidade
+     * @param Modalidade $modalidades
      */
-    public function setModalidade($modalidade)
+    public function setModalidades($modalidades)
     {
-        $this->modalidade = $modalidade;
+        $this->modalidades = $modalidades;
     }
 
     /**
