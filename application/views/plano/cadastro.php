@@ -1,7 +1,7 @@
 <div style="margin-bottom: 100px" class="container">
     <div class="row">
         <div class="col col-12 col-titulo-page-cadastro">
-            <span class="titulo-page-cadastro">CADASTRAR PLANO</span>
+            <span class="titulo-page-cadastro"><?= isset($plano) ? "EDITAR" : "CADASTRAR" ?> PLANO</span>
         </div>
     </div>
     <div style="display: none" class="alert alert-dismissible fade show retorno-erro" role="alert">

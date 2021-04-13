@@ -1,29 +1,45 @@
 <div class="container">
     <div class="row">
         <div class="col col-12 col-titulo-page-cadastro">
-            <span class="titulo-page-cadastro"><?= isset($modalidade) ? "EDITAR" : "CADASTRAR" ?> MODALIDADE</span>
+            <span class="titulo-page-cadastro"><?= isset($aula) ? "EDITAR" : "CADASTRAR" ?> AULA</span>
         </div>
     </div>
     <div style="display: none" class="alert alert-dismissible fade show retorno-erro" role="alert">
     </div>
     <hr>
-    <form id="form-modalidades" autocomplete="off">
-        <input type="hidden" name="id" value="<?= isset($modalidade) ? $modalidade->getId() : "" ?>">
+    <form id="form-aulas" autocomplete="off">
+        <input type="hidden" name="id" value="<?= isset($aula) ? $aula->getId() : "" ?>">
         <div class="row row-form">
             <div class="col col-12 title-form">
                 DADOS:
             </div>
         </div>
         <div class="row row-form">
-            <div class="col col-lg-12 col-xs-12">
-                <label for="input-nome">NOME</label>
-                <input value="<?= isset($modalidade) ? $modalidade->getNome() : "" ?>" type="text" class="form-control" id="input-nome" name="nome">
+            <div class="col col-lg-6 col-xs-12">
+                <label for="select-modalidade">MODALIDADE</label>
+                <select name="modalidade" class="form-control" id="select-modalidade">
+                    <?php foreach ($modalidades as $modalidade) : ?>
+                        <option <?= isset($aula) && $aula->getModalidade()->getId() == $modalidade->getId() ? 'selected' : "" ?> value="<?= $modalidade->getId() ?>"><?= $modalidade->getNome() ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col col-lg-6 col-xs-12">
+                <label for="select-professor">PROFESSOR</label>
+                <select name="professor" class="form-control" id="select-professor">
+                    <?php foreach ($professores as $professor) : ?>
+                        <option <?= isset($aula) && $aula->getProfessor()->getId() == $professor->getId() ? 'selected' : "" ?> value="<?= $professor->getId() ?>"><?= $professor->getNome() ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </div>
         <div class="row row-form">
-            <div class="col col-lg-12 col-xs-12">
-                <label for="input-descricao">DESCRIÇÃO</label>
-                <textarea name="descricao" class="form-control" id="input-descricao" rows="3"><?= isset($modalidade) ? $modalidade->getDescricao() : "" ?></textarea>
+            <div class="col col-lg-6 col-xs-12">
+                <label for="input-horario">HORÁRIO</label>
+                <input type="text" name="horario" class="form-control" id="input-horario" rows="3" value="<?= isset($aula) ? $aula->getHorario()->format('H:i') : "" ?>">
+            </div>
+            <div class="col col-lg-6 col-xs-12">
+                <label for="input-capacidade">CAPACIDADE</label>
+                <input type="text" name="capacidade" class="form-control" id="input-capacidade" rows="3" value="<?= isset($aula) ? $aula->getCapacidade() : "" ?>">
             </div>
         </div>
         <div style="text-align: end;" class="row row-form">
@@ -40,7 +56,7 @@
     function onReady() {
         // marcação no dropdown
         $('.nav-link').removeClass('active');
-        $('.modalidades-link').addClass('active');
+        $('.aulas-link').addClass('active');
         $('#dropdown-operacional').addClass('active');
 
         $('.nav-link').click(function() {
@@ -48,11 +64,14 @@
             $(this).addClass('active');
         });
 
+        // máscaras
+        $('#input-horario').mask("99:99");
+
         // submit do form
         $('#botao-salvar').click(function() {
-            var form = $('#form-modalidades').serialize();
+            var form = $('#form-aulas').serialize();
 
-            $.post('<?= base_url('Modalidades/cadastroAction') ?>', form, function(retorno) {
+            $.post('<?= base_url('Aulas/cadastroAction') ?>', form, function(retorno) {
                 if (retorno.erro) {
                     $('.retorno-erro').html("");
                     $('.retorno-erro').addClass('alert-warning');
@@ -72,8 +91,8 @@
                                                 <span aria-hidden='true'>&times;</span>\
                                             </button>`);
                     $('.retorno-erro').show();
-                    $('#form-modalidades input').val("");
-                    $('#form-modalidades textarea').val("");
+                    $('#form-aulas input').val("");
+                    $$("#form-aulas select").val([]);
                 }
             }, "json");
         });

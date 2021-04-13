@@ -9,7 +9,7 @@ class Agendamento extends Entidade
 {
     /**
      * @var string
-     * @Column(type="string", length=255, nullable=false)
+     * @Column(type="string", length=255, nullable=true)
      */
     protected $observacao;
     

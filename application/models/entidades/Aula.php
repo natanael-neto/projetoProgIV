@@ -14,7 +14,7 @@ class Aula extends Entidade
     protected $capacidade;
 
     /**
-     * @Column(type="time", nullable=false)
+     * @Column(type="datetime", nullable=false)
      */
     protected $horario;
 
