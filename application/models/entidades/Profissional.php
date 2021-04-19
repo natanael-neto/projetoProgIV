@@ -44,14 +44,14 @@ class Profissional extends Entidade
     protected $cargaHoraria;
 
     /**
-     * @var integer
-     * @Column(type="integer", nullable=false)
+     * @var string
+     * @Column(type="string", nullable=false)
      */
     protected $inicioJornada;
 
     /**
-     * @var integer
-     * @Column(type="integer", nullable=false)
+     * @var string
+     * @Column(type="string", nullable=false)
      */
     protected $saidaJornada;
 
@@ -216,7 +216,7 @@ class Profissional extends Entidade
     }
 
     /**
-     * @return integer
+     * @return string
      */
     public function getInicioJornada()
     {
@@ -224,7 +224,7 @@ class Profissional extends Entidade
     }
 
     /**
-     * @param integer $inicioJornada
+     * @param string $inicioJornada
      */
     public function setInicioJornada($inicioJornada)
     {
@@ -232,7 +232,7 @@ class Profissional extends Entidade
     }
 
     /**
-     * @return integer
+     * @return string
      */
     public function getSaidaJornada()
     {
@@ -240,7 +240,7 @@ class Profissional extends Entidade
     }
 
     /**
-     * @param integer $saidaJornada
+     * @param string $saidaJornada
      */
     public function setSaidaJornada($saidaJornada)
     {
