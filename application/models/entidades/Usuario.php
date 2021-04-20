@@ -36,6 +36,16 @@ class Usuario extends Entidade
     protected $perfil;
 
     /**
+     * @OneToOne(targetEntity="Aluno", mappedBy="usuario")
+     */
+    private $aluno;
+
+    /**
+     * @OneToOne(targetEntity="Profissional", mappedBy="usuario")
+     */
+    private $profissional;
+
+    /**
      * @return string
      */
     public function getUsername()
@@ -104,5 +114,37 @@ class Usuario extends Entidade
     public function setPerfil($perfil)
     {
         $this->perfil = $perfil;
+    }
+
+    /**
+     * @return Aluno
+     */
+    public function getAluno()
+    {
+        return $this->aluno;
+    }
+
+    /**
+     * @param Aluno $aluno
+     */
+    public function setAluno($aluno)
+    {
+        $this->aluno = $aluno;
+    }
+
+    /**
+     * @return Profissional
+     */
+    public function getProfissional()
+    {
+        return $this->profissional;
+    }
+
+    /**
+     * @param Profissional $profissional
+     */
+    public function setProfissional($profissional)
+    {
+        $this->profissional = $profissional;
     }
 }

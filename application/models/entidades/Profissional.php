@@ -62,9 +62,11 @@ class Profissional extends Entidade
     protected $dataNascimento;
 
     /**
-     * @ManyToOne(targetEntity="Perfil")
+     * @OneToOne(targetEntity="Usuario", inversedBy="profissional")
+     * @JoinColumn(name="usuario_id", referencedColumnName="id")
      */
-    protected $perfil;
+    private $usuario;
+
 
     /**
      * @ManyToOne(targetEntity="Endereco")
@@ -152,19 +154,19 @@ class Profissional extends Entidade
     }
 
     /**
-     * @return Perfil
+     * @return Usuario
      */
-    public function getPerfil()
+    public function getUsuario()
     {
-        return $this->perfil;
+        return $this->usuario;
     }
 
     /**
-     * @param Perfil $perfil
+     * @param Usuario $usuario
      */
-    public function setPerfil($perfil)
+    public function setUsuario($usuario)
     {
-        $this->perfil = $perfil;
+        $this->usuario = $usuario;
     }
 
     /**
