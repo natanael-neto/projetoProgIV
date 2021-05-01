@@ -5,6 +5,14 @@ class AlunosAgendamento extends MY_Controller
 {
 	public function index()
 	{
-		$this->template->load('template', 'inicio/inicioAluno');
+		$alunoBLL = new \models\bll\AlunoBLL();
+
+		$cpf = $this->usuarioLogado->getLogin();
+		$aluno = $alunoBLL->buscarUmPor(array("cpf" => $cpf));
+		
+		$data['titulo'] = "Agendamento";
+		$data['aluno'] = $aluno;
+
+		$this->template->load('template', 'inicio/inicioAluno', $data);
 	}
 }

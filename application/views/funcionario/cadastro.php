@@ -36,7 +36,7 @@
                                 continue;
                             }
                         ?>
-                        <option <?= isset($funcionario) && $funcionario->getPerfil()->getId() == $perfil->getId() ? 'checked' : '' ?> value="<?= $perfil->getId() ?>"><?= ucfirst($perfil->getNome()) ?></option>
+                        <option <?= isset($funcionario) && $funcionario->getUsuario()->getPerfil()->getId() == $perfil->getId() ? 'checked' : '' ?> value="<?= $perfil->getId() ?>"><?= ucfirst($perfil->getNome()) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

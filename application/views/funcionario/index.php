@@ -43,7 +43,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="5"><?= $this->pagination->create_links(); ?></th>
+                <th colspan="7"><?= $this->pagination->create_links(); ?></th>
             </tr>
         </tfoot>
     </table>

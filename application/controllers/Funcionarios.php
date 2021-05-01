@@ -3,6 +3,7 @@
 use models\bll\ProfissionalBLL;
 use models\bll\EnderecoBLL;
 use models\bll\PerfilBLL;
+use models\entidades\Usuario;
 use \models\entidades\Profissional;
 use \models\entidades\Endereco;
 
@@ -69,9 +70,11 @@ class Funcionarios extends MY_Controller
 
                 $funcionario = $profissionalBLL->buscarPorId($_POST['id']);
                 $endereco = $funcionario->getEndereco();
+                $usuario = $funcionario->getUsuario();
             } else {
                 $funcionario = new Profissional();
                 $endereco = new Endereco();
+                $usuario = new Usuario();
             }
 
             $retorno = array('erro' => true);
@@ -173,7 +176,17 @@ class Funcionarios extends MY_Controller
 
             $perfilBLL = new PerfilBLL();
 
-            $funcionario->setPerfil($perfilBLL->buscarPorId($_POST['perfil']));
+            $usuario->setPerfil($perfilBLL->buscarPorId($_POST['perfil']));
+            $usuario->setLogin($_POST['cpf']);
+            $usuario->setUsername($_POST['nome']);
+            $usuario->setActive(true);
+
+            if (empty($usuario->getId())) {
+                $cpf = str_replace(array('.', '-'), '', $_POST['cpf']);
+                $usuario->setPassword(md5($cpf));
+            }
+
+            $funcionario->setUsuario($usuario);
             $funcionario->setNome($_POST['nome']);
             $funcionario->setCpf($_POST['cpf']);
             $funcionario->setEmail($_POST['email']);

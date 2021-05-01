@@ -7,6 +7,8 @@ use models\bll\PerfilBLL;
 use models\bll\AgendamentoBLL;
 use \models\entidades\Aluno;
 use \models\entidades\Endereco;
+use models\entidades\Usuario;
+
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -71,13 +73,11 @@ class Alunos extends MY_Controller
 
 				$aluno = $alunoBLL->buscarPorId($_POST['id']);
 				$endereco = $aluno->getEndereco();
+				$usuario = $aluno->getUsuario();
 			} else {
-				$perfilBLL = new PerfilBLL();
-
 				$aluno = new Aluno();
 				$endereco = new Endereco();
-
-				$aluno->setPerfil($perfilBLL->buscarUmPor(array('nome' => 'aluno')));
+				$usuario = new Usuario();
 			}
 
 			$retorno = array('erro' => true);
@@ -145,6 +145,17 @@ class Alunos extends MY_Controller
 
 			$planoBLL = new PlanoBLL();
 			$plano = $planoBLL->buscarPorId($_POST['plano']);
+			$perfilBLL = new PerfilBLL();
+
+			$usuario->setPerfil($perfilBLL->buscarUmPor(array('nome' => 'aluno')));
+			$usuario->setLogin($_POST['cpf']);
+			$usuario->setUsername($_POST['nome']);
+			$usuario->setActive(true);
+
+			if (empty($usuario->getId())) {
+				$cpf = str_replace(array('.', '-'), '', $_POST['cpf']);
+				$usuario->setPassword(md5($cpf));
+			}
 
 			$endereco->setLogradouro($_POST['logradouro']);
 			$endereco->setNumero($_POST['numero']);
@@ -178,7 +189,7 @@ class Alunos extends MY_Controller
 	public function excluir($id = null)
 	{
 		try {
-			
+
 			$retorno = array('erro' => true);
 
 			if (empty($id)) {
@@ -187,7 +198,7 @@ class Alunos extends MY_Controller
 			$enderecoBLL = new EnderecoBLL();
 			$alunoBLL = new AlunoBLL();
 			$agendamentoBLL = new AgendamentoBLL();
-			
+
 			$agendamentos = $agendamentoBLL->consultar("a.id = {$id}", null, 'JOIN e.aluno a');
 			$agendamentoBLL->removerTodos($agendamentos);
 
