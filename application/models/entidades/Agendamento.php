@@ -20,7 +20,7 @@ class Agendamento extends Entidade
     protected $dataAgendamento;
 
     /**
-     * @OneToOne(targetEntity="Aula")
+     * @ManyToOne(targetEntity="Aula")
      */
     protected $aula;
 

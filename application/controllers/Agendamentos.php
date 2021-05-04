@@ -66,8 +66,9 @@ class Agendamentos extends MY_Controller
 
     public function cadastroAction()
     {
+        
         try {
-            if ($_POST['id']) {
+            if (isset($_POST['id']) && !empty($_POST['id'])) {
                 $agendamentoBLL = new AgendamentoBLL();
                 $agendamento = $agendamentoBLL->buscarPorId($_POST['id']);
             } else {
@@ -89,10 +90,10 @@ class Agendamentos extends MY_Controller
             $aluno = $alunoBLL->buscarPorId($_POST['aluno']);
 
             // Validações
-            $agendamentoIgual = $agendamentoBLL->consultar("al.id = {$_POST['aluno']} AND a.id = {$_POST['aula']}", null, "JOIN e.aluno al JOIN e.aula a");
-            $vagasPreenchidas = count($agendamentoBLL->consultar("a.id = {$_POST['aula']} AND e.dataAgendamento = {$data->format('Y-m-d')}", null, "JOIN e.aula a"));
+            $agendamentoIgual = $agendamentoBLL->consultar("al.id = {$aluno->getId()} AND a.id = {$aula->getId()} AND e.dataAgendamento = '{$data->format('Y-m-d')} 00:00:00'", null, "JOIN e.aluno al JOIN e.aula a");
+            $vagasPreenchidas = count($agendamentoBLL->consultar("a.id = {$aula->getId()} AND e.dataAgendamento = {$data->format('Y-m-d')}", null, "JOIN e.aula a"));
 
-            if (count($agendamentoIgual) > 0 && !$_POST['id']) {
+            if (count($agendamentoIgual) > 0 && !isset($_POST['id'])) {
                 throw new Exception("Já existe um agendamento com esse aluno e com essa aula cadastrado.");
             }
 
@@ -103,7 +104,7 @@ class Agendamentos extends MY_Controller
             $agendamento->setAluno($aluno);
             $agendamento->setAula($aula);
             $agendamento->setDataAgendamento($data);
-            $agendamento->setObservacao($_POST['observacao']);
+            $agendamento->setObservacao(isset($_POST['observacao']) ? $_POST['observacao'] : "Via aluno");
 
             $this->doctrine->em->flush();
 

@@ -167,6 +167,7 @@ class Alunos extends MY_Controller
 			$endereco->setPontoReferencia($_POST['pontoReferencia']);
 			$endereco->setCep($_POST['cep']);
 
+			$aluno->setUsuario($usuario);
 			$aluno->setNome($_POST['nome']);
 			$aluno->setCpf($_POST['cpf']);
 			$aluno->setEmail($_POST['email']);

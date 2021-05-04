@@ -155,25 +155,14 @@ i {
 
 /* VIEW ALUNO */
 
-.MensagemInicio {
+.mensagem-inicio {
     display: flex;
-    margin: 5rem 0 6rem;
+    margin: 2rem 0 3rem;
     justify-content: center;
 }
 
-.MensagemInicio strong {
+.mensagem-inicio strong {
     color: #21897E;
-}
-
-.AlunoPressets h2 {
-    font-weight: 600;
-    margin-bottom: 5rem;
-}
-
-.AlunoPressets h5 {
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: #696969;
 }
 
 .main-title {
