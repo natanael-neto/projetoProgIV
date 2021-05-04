@@ -81,10 +81,7 @@
                 if (retorno.erro) {
                     $('.retorno-erro').html("");
                     $('.retorno-erro').addClass('alert-warning');
-                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}\
-                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
-                                                <span aria-hidden='true'>&times;</span>\
-                                            </button>`);
+                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}`);
                     $('.retorno-erro').show();
                 } else {
                     $('.retorno-erro').html("");
@@ -92,10 +89,7 @@
                         $('.retorno-erro').removeClass('alert-warning');
                     }
                     $('.retorno-erro').addClass('alert-success');
-                    $('.retorno-erro').html(`${retorno.mensagem}\
-                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
-                                                <span aria-hidden='true'>&times;</span>\
-                                            </button>`);
+                    $('.retorno-erro').html(`${retorno.mensagem}`);
                     $('.retorno-erro').show();
                     $('#form-planos input').val("");
                     $('#form-planos textarea').val("");
