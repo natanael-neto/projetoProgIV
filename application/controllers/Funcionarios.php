@@ -3,6 +3,7 @@
 use models\bll\ProfissionalBLL;
 use models\bll\EnderecoBLL;
 use models\bll\PerfilBLL;
+use models\bll\UsuarioBLL;
 use models\entidades\Usuario;
 use \models\entidades\Profissional;
 use \models\entidades\Endereco;
@@ -117,10 +118,10 @@ class Funcionarios extends MY_Controller
             if (empty($_POST['saidaJornada'])) {
                 throw new Exception("Por favor, digite um jornada final.");
             } else {
-                $horas = explode(':', $_POST['inicioJornada']);
+                $horas = explode(':', $_POST['saidaJornada']);
 
                 if (((int) $horas[0] < 0 || (int) $horas[0] > 24) || ((int) $horas[1] < 0 || (int) $horas[1] > 60)) {
-                    throw new Exception("Por favor, digite uma jornada inicial válida.");
+                    throw new Exception("Por favor, digite uma jornada final válida.");
                 }
             }
 
@@ -220,9 +221,11 @@ class Funcionarios extends MY_Controller
 
             $profissionalBLL = new ProfissionalBLL();
             $enderecoBLL = new EnderecoBLL();
+            $usuarioBLL = new UsuarioBLL();
 
             $funcionario = $profissionalBLL->buscarPorId($id);
 
+            $usuarioBLL->removerPorId($funcionario->getUsuario()->getId());
             $enderecoBLL->removerPorId($funcionario->getEndereco()->getId());
             $profissionalBLL->removerPorId($funcionario->getId());
 

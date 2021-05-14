@@ -80,6 +80,15 @@ class Aulas extends MY_Controller
             $modalidadeBLL = new ModalidadeBLL();
 
             // Validações
+
+            if (empty($_POST['professor'])) {
+                throw new Exception("Por favor, selecione um professor.");
+            }
+            
+            if (empty($_POST['modalidade'])) {
+                throw new Exception("Por favor, selecione uma modalidade.");
+            }
+
             if (empty($_POST['horario'])) {
                 throw new Exception("Por favor, digite um horário.");
             }

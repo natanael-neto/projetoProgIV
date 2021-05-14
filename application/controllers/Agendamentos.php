@@ -82,6 +82,14 @@ class Agendamentos extends MY_Controller
 
             $data = new DateTime('today');
 
+            if (empty($_POST['aluno'])) {
+                throw new Exception('Por favor, selecione um aluno.');
+            }
+
+            if (empty($_POST['aula'])) {
+                throw new Exception('Por favor, selecione uma aula.');
+            }
+
             if ($_POST['data'] == 'amanha') {
                 $data->add(new DateInterval('P1D'));
             }

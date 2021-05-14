@@ -4,6 +4,7 @@ use models\bll\AlunoBLL;
 use models\bll\EnderecoBLL;
 use models\bll\PlanoBLL;
 use models\bll\PerfilBLL;
+use models\bll\UsuarioBLL;
 use models\bll\AgendamentoBLL;
 use \models\entidades\Aluno;
 use \models\entidades\Endereco;
@@ -199,12 +200,14 @@ class Alunos extends MY_Controller
 			$enderecoBLL = new EnderecoBLL();
 			$alunoBLL = new AlunoBLL();
 			$agendamentoBLL = new AgendamentoBLL();
+            $usuarioBLL = new UsuarioBLL();
 
 			$agendamentos = $agendamentoBLL->consultar("a.id = {$id}", null, 'JOIN e.aluno a');
 			$agendamentoBLL->removerTodos($agendamentos);
 
 			$aluno = $alunoBLL->buscarPorId($id);
 
+			$usuarioBLL->removerPorId($aluno->getUsuario()->getId());
 			$enderecoBLL->removerPorId($aluno->getEndereco()->getId());
 			$alunoBLL->removerPorId($aluno->getId());
 
