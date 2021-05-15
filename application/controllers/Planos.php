@@ -2,6 +2,7 @@
 
 use models\bll\ModalidadeBLL;
 use models\bll\PlanoBLL;
+use models\bll\AlunoBLL;
 use models\entidades\Plano;
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -58,7 +59,7 @@ class Planos extends MY_Controller
     }
 
     public function cadastroAction()
-    {        
+    {
         try {
             if ($_POST['id']) {
                 $planoBLL = new PlanoBLL();
@@ -91,16 +92,16 @@ class Planos extends MY_Controller
             $plano->setDescricao($_POST['descricao']);
 
             $modalidadeBLL = new ModalidadeBLL();
-            
+
             $plano->getModalidades()->clear();
-            
+
             foreach ($_POST['modalidades'] as $modalidade_id) {
                 /** @var Modalidade $modalidade*/
                 $modalidade = $modalidadeBLL->buscarPorId($modalidade_id);
-                
+
                 $modalidade->getPlanos()->clear();
                 $modalidade->getPlanos()->add($plano);
-                
+
                 $plano->getModalidades()->add($modalidade);
             }
 
@@ -118,13 +119,21 @@ class Planos extends MY_Controller
     public function excluir($id = null)
     {
         try {
+            $planoBLL = new PlanoBLL();
+            $alunoBLL = new AlunoBLL();
+
             $retorno = array('erro' => true);
 
             if (empty($id)) {
                 throw new Exception('ID inválido.');
             }
 
-            $planoBLL = new PlanoBLL();           
+            $alunos = $alunoBLL->consultar("p.id = {$id}", null, "JOIN e.plano p");
+
+            if (count($alunos) > 0) {
+                throw new Exception('Um ou mais alunos utilizam esse plano, por favor, altere os planos desses alunos.');
+            }
+
             $planoBLL->removerPorId($id);
 
             $this->doctrine->em->flush();

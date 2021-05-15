@@ -17,6 +17,8 @@ class Funcionarios extends MY_Controller
 
         if ($this->usuarioLogado->getPerfil()->getNome() == 'aluno') {
             redirect("AlunosAgendamento");
+        } else if ($this->usuarioLogado->getPerfil()->getNome() == 'funcionario') {
+            redirect("Inicio");
         }
 
         $profissionalBLL = new ProfissionalBLL();
