@@ -1,5 +1,3 @@
-<?php include APPPATH . 'views\layoutElements\navWelcome.php' ?>
-
 <!-- IMAGEM SUPERIOR -->
 <div class="jumbotron jumb-image">
     <h1 class="display-4 jumb-titulo">ACADEMIA SISCTRL</h1>

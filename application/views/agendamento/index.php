@@ -1,9 +1,11 @@
-<div class="row area-row-cadastro">
+<div class="row <?= $this->usuarioLogado->getPerfil()->getNome() != 'aluno' ? 'area-row-cadastro' : 'area-row-cadastro-aluno' ?>">
     <div class="col col-10">
         <span class="titulo-row-cadastro">AGENDAMENTOS</span>
     </div>
     <div class="col col-2 col-botao-cadastro">
-        <a style="font-weight: 700;" href="<?= base_url('Agendamentos/cadastro') ?>" class="btn btn-md btn-info"><i class="fa fa-plus icon-botao-sair"></i> CADASTRAR</a>
+        <?php if ($this->usuarioLogado->getPerfil()->getNome() != 'aluno') : ?>
+            <a style="font-weight: 700;" href="<?= base_url('Agendamentos/cadastro') ?>" class="btn btn-md btn-info"><i class="fa fa-plus icon-botao-sair"></i> CADASTRAR</a>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -33,10 +35,18 @@
                     <td style="text-align: center;"><?= $agendamento->getAula()->getModalidade()->getNome() ?></td>
                     <td style="text-align: center;"><?= $agendamento->getAula()->getProfessor()->getNome() ?></td>
                     <td>
-                        <div class="btn-group mr-2 btn-group-sm" role="group" aria-label="First group">
-                            <a href="<?= base_url('Agendamentos/editar/') . $agendamento->getId() ?>" class="btn btn-warning link-acoes">EDITAR</a>
-                            <a class="btn btn-danger link-acoes excluir-agendamento">EXCLUIR</a>
-                        </div>
+                        <?php if ($this->usuarioLogado->getPerfil()->getNome() != 'aluno') : ?>
+                            <?php if ($agendamento->getDataAgendamento() > new DateTime('today')) : ?>
+                                <div class="btn-group mr-2 btn-group-sm" role="group" aria-label="First group">
+                                    <a href="<?= base_url('Agendamentos/editar/') . $agendamento->getId() ?>" class="btn btn-warning link-acoes">EDITAR</a>
+                                    <a class="btn btn-danger link-acoes excluir-agendamento">EXCLUIR</a>
+                                </div>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <?php if ($agendamento->getDataAgendamento() > new DateTime('today')) : ?>
+                                <button type="button" class="btn btn-danger btn-sm link-acoes excluir-agendamento">EXCLUIR</button>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -76,6 +86,7 @@
         $('.nav-link').removeClass('active');
         $('.agendamentos-link').addClass('active');
         $('#dropdown-operacional').addClass('active');
+        $('#dropdown-ag-alunos').addClass('active');
 
         $('.nav-link').click(function() {
             $('.nav-link').removeClass('active');
@@ -96,10 +107,7 @@
                 if (retorno.erro) {
                     $('.retorno-erro').html("");
                     $('.retorno-erro').addClass('alert-warning');
-                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}\
-                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
-                                                <span aria-hidden='true'>&times;</span>\
-                                            </button>`);
+                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}`);
                     $('.retorno-erro').show();
                 } else {
                     $('.retorno-erro').html("");
@@ -107,10 +115,7 @@
                         $('.retorno-erro').removeClass('alert-warning');
                     }
                     $('.retorno-erro').addClass('alert-success');
-                    $('.retorno-erro').html(`${retorno.mensagem}\
-                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>\
-                                                <span aria-hidden='true'>&times;</span>\
-                                            </button>`);
+                    $('.retorno-erro').html(`${retorno.mensagem}`);
                     $('.retorno-erro').show();
 
                     $(`.tr-agendamento-${id}`).remove();

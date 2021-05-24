@@ -18,6 +18,7 @@
                 <th style="text-align: center;" scope="col">Nome</th>
                 <th style="text-align: center;" scope="col">E-mail</th>
                 <th style="text-align: center;" scope="col">Função</th>
+                <th style="text-align: center;" scope="col">Perfil de Acesso</th>
                 <th style="text-align: center;" scope="col">Horário de Entrada</th>
                 <th style="text-align: center;" scope="col">Horário de Saída</th>
                 <th style="text-align: center;" scope="col" width="150">Ações</th>
@@ -29,7 +30,8 @@
                     <td style="text-align: center;" scope="row"><?= $funcionario->getId() ?></td>
                     <td style="text-align: center;"><?= $funcionario->getNome() ?></td>
                     <td style="text-align: center;"><?= $funcionario->getEmail() ?></td>
-                    <td style="text-align: center;"><?= $funcionario->getFuncao() ?></td>
+                    <td style="text-align: center;"><?= $funcionario->getFuncao() ?></td>                    
+                    <td style="text-align: center;"><?= ucfirst($funcionario->getUsuario()->getPerfil()->getNome()) ?></td>                    
                     <td style="text-align: center;"><?= $funcionario->getInicioJornada() ?></td>
                     <td style="text-align: center;"><?= $funcionario->getSaidaJornada() ?></td>
                     <td>
@@ -43,7 +45,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="7"><?= $this->pagination->create_links(); ?></th>
+                <th colspan="8"><?= $this->pagination->create_links(); ?></th>
             </tr>
         </tfoot>
     </table>

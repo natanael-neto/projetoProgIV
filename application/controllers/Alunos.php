@@ -69,9 +69,9 @@ class Alunos extends MY_Controller
 	public function cadastroAction()
 	{
 		try {
+			$alunoBLL = new AlunoBLL();
+			
 			if ($_POST['id']) {
-				$alunoBLL = new AlunoBLL();
-
 				$aluno = $alunoBLL->buscarPorId($_POST['id']);
 				$endereco = $aluno->getEndereco();
 				$usuario = $aluno->getUsuario();
@@ -91,6 +91,12 @@ class Alunos extends MY_Controller
 			if (empty($_POST['cpf']) || !validaCpf($_POST['cpf'])) {
 				throw new Exception("Por favor, digite um CPF válido.");
 			}
+
+			$validarCpfExistente = $alunoBLL->buscarPor(array('cpf' => $_POST['cpf']));
+
+            if (!$_POST['id'] && count($validarCpfExistente) >= 1) {
+                throw new Exception("Já existe um aluno cadastrado com esse CPF.");
+            }
 
 			if (empty($_POST['email']) || !validaEmail($_POST['email'])) {
 				throw new Exception("Por favor, digite um e-mail válido.");
@@ -154,8 +160,8 @@ class Alunos extends MY_Controller
 			$usuario->setActive(true);
 
 			if (empty($usuario->getId())) {
-				$cpf = str_replace(array('.', '-'), '', $_POST['cpf']);
-				$usuario->setPassword(md5($cpf));
+				$senha = gerar_senha();
+				$usuario->setPassword(md5($senha));
 			}
 
 			$endereco->setLogradouro($_POST['logradouro']);
@@ -178,6 +184,15 @@ class Alunos extends MY_Controller
 			$aluno->setPlano($plano);
 
 			$this->doctrine->em->flush();
+			
+			if (!$_POST['id']) {
+                $this->load->library('email');
+                $this->email->from("sisctrlgym@email.com", "Academia SisCtrl");
+                $this->email->to("{$_POST['email']}");
+                $this->email->subject('Confirmação de cadastro');
+                $this->email->message("Olá, {$_POST['nome']}! Seu cadastro foi confirmado no sistema da Academia SisCtrl! Seu login é o seu CPF: {$_POST['cpf']} e sua senha é {$senha}.");
+                $this->email->send();
+            }
 
 			$retorno["erro"] = false;
 			$retorno["mensagem"] = "<strong>Sucesso!</strong> Cadastro realizado.";

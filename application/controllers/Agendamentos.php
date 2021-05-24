@@ -66,9 +66,9 @@ class Agendamentos extends MY_Controller
 
     public function cadastroAction()
     {
-        
+
         try {
-            if (isset($_POST['id']) && !empty($_POST['id'])) {
+            if (@$_POST['id'] && !empty($_POST['id']) && !$_POST['cadastroPorAluno']) {
                 $agendamentoBLL = new AgendamentoBLL();
                 $agendamento = $agendamentoBLL->buscarPorId($_POST['id']);
             } else {
@@ -101,7 +101,7 @@ class Agendamentos extends MY_Controller
             $agendamentoIgual = $agendamentoBLL->consultar("al.id = {$aluno->getId()} AND a.id = {$aula->getId()} AND e.dataAgendamento = '{$data->format('Y-m-d')} 00:00:00'", null, "JOIN e.aluno al JOIN e.aula a");
             $vagasPreenchidas = count($agendamentoBLL->consultar("a.id = {$aula->getId()} AND e.dataAgendamento = {$data->format('Y-m-d')}", null, "JOIN e.aula a"));
 
-            if (count($agendamentoIgual) > 0 && !isset($_POST['id'])) {
+            if (count($agendamentoIgual) > 0 && (!@$_POST['id'] || ($_POST['cadastroPorAluno'] && $_POST['cadastroPorAluno'] == 1))) {
                 throw new Exception("Já existe um agendamento com esse aluno e com essa aula cadastrado.");
             }
 
@@ -115,6 +115,13 @@ class Agendamentos extends MY_Controller
             $agendamento->setObservacao(isset($_POST['observacao']) ? $_POST['observacao'] : "Via aluno");
 
             $this->doctrine->em->flush();
+
+            $this->load->library('email');
+            $this->email->from("sisctrlgym@email.com", "Academia SisCtrl");
+            $this->email->to("{$aluno->getEmail()}");
+            $this->email->subject('Confirmação de cadastro');
+            $this->email->message("Olá, {$aluno->getNome()}! Seu agendamento foi confirmado no sistema da Academia SisCtrl! Será na data {$data->format('d/m/Y')}, na aula de {$aula->getModalidade()->getNome()}, às {$aula->getHorario()->format('H:i')}.");
+            $this->email->send();
 
             $retorno["erro"] = false;
             $retorno["mensagem"] = "<strong>Sucesso!</strong> Cadastro realizado.";

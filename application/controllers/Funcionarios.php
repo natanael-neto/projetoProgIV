@@ -68,9 +68,9 @@ class Funcionarios extends MY_Controller
     public function cadastroAction()
     {
         try {
-            if ($_POST['id']) {
-                $profissionalBLL = new ProfissionalBLL();
+            $profissionalBLL = new ProfissionalBLL();
 
+            if ($_POST['id']) {
                 $funcionario = $profissionalBLL->buscarPorId($_POST['id']);
                 $endereco = $funcionario->getEndereco();
                 $usuario = $funcionario->getUsuario();
@@ -83,12 +83,19 @@ class Funcionarios extends MY_Controller
             $retorno = array('erro' => true);
 
             // Validações
+
             if (empty($_POST['nome'])) {
                 throw new Exception("Por favor, digite um nome.");
             }
 
             if (empty($_POST['cpf']) || !validaCpf($_POST['cpf'])) {
                 throw new Exception("Por favor, digite um CPF válido.");
+            }
+
+            $validarCpfExistente = $profissionalBLL->buscarPor(array('cpf' => $_POST['cpf']));
+
+            if (!$_POST['id'] && count($validarCpfExistente) >= 1) {
+                throw new Exception("Já existe um profissional cadastrado com esse CPF.");
             }
 
             if (empty($_POST['email']) || !validaEmail($_POST['email'])) {
@@ -128,7 +135,7 @@ class Funcionarios extends MY_Controller
             }
 
             if (empty($_POST['cargaHoraria']) || ((int) $_POST['cargaHoraria'] < 0 || (int) $_POST['cargaHoraria'] > 12)) {
-                throw new Exception("Por favor, digite uma carga horária válida.");
+                throw new Exception("Por favor, digite uma carga horária válida. (Entre 0 e 12 horas diárias)");
             }
 
             if (empty($_POST['logradouro'])) {
@@ -185,8 +192,8 @@ class Funcionarios extends MY_Controller
             $usuario->setActive(true);
 
             if (empty($usuario->getId())) {
-                $cpf = str_replace(array('.', '-'), '', $_POST['cpf']);
-                $usuario->setPassword(md5($cpf));
+                $senha = gerar_senha();
+                $usuario->setPassword(md5($senha));
             }
 
             $funcionario->setUsuario($usuario);
@@ -200,8 +207,17 @@ class Funcionarios extends MY_Controller
             $funcionario->setCargaHoraria($_POST['cargaHoraria']);
             $funcionario->setFuncao($_POST['funcao']);
             $funcionario->setEndereco($endereco);
-
+            
             $this->doctrine->em->flush();
+            
+            if (!$_POST['id']) {
+                $this->load->library('email');
+                $this->email->from("sisctrlgym@email.com", "Academia SisCtrl");
+                $this->email->to("{$_POST['email']}");
+                $this->email->subject('Confirmação de cadastro');
+                $this->email->message("Olá, {$_POST['nome']}! Seu cadastro foi confirmado no sistema da Academia SisCtrl! Seu login é o seu CPF: {$_POST['cpf']} e sua senha é {$senha}.");
+                $this->email->send();
+            }
 
             $retorno["erro"] = false;
             $retorno["mensagem"] = "<strong>Sucesso!</strong> Cadastro realizado.";

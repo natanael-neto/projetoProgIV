@@ -1,74 +1,9 @@
-<?php include APPPATH . 'views\layoutElements\navAluno.php' ?>
-
 <div class="container">
-    <div class="row">
-        <div class="col-12 mensagem-inicio">
-            <h1>Olá, <strong><?= $aluno->getNome() ?></strong>!</h1>
-        </div>
+    <div class="jumbotron jumb-inicio">
+        <h1 class="display-4">SEJA BEM-VINDO!</h1>
+        <p class="lead">Aqui você pode ter controle dos seus agendamentos!</p>
+        <hr class="my-4">
+        <p>Veja quais os agendamentos para as próximas aulas!</p>
+        <a class="btn btn-dark btn-lg" href="<?= base_url('AlunosAgendamento/agendar') ?>" role="button">AGENDAR AULA</a>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-12 mensagem-inicio">
-            <h4>AGENDE SUAS AULAS!</h4>
-        </div>
-    </div>
-    <div style="display:none" class="alert alert-dismissible fade show retorno-erro" role="alert">
-    </div>
-    <form autocomplete="off" id="form-agendamentos-alunos">
-        <input type="hidden" name="aluno" value="<?= $this->usuarioLogado->getId() ?>">
-        <div class="row">
-            <div class="col col-lg-6 col-xs-12">
-                <label for="select-dia">DIA</label>
-                <select name="data" class="form-control" id="select-dia">
-                    <option value="hoje">Hoje</option>
-                    <option value="amanha">Amanhã</option>
-                </select>
-            </div>
-            <div class="col col-lg-6 col-xs-12">
-                <label for="select-aula">AULA</label>
-                <select name="aula" class="form-control" id="select-aula">
-                    <?php foreach ($aulas as $aula) : ?>
-                        <option value="<?= $aula->getId() ?>"><?= $aula->getModalidade()->getNome() . " (" . $aula->getHorario()->format('H:i') . ") " ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-        <div style="text-align: end;" class="row row-form">
-            <div class="col col-12">
-                <button type="button" id="botao-salvar" class="btn btn-success btn-md">
-                    SALVAR
-                </button>
-            </div>
-        </div>
-    </form>
 </div>
-
-<script>
-    function onReady() {
-        // submit do form
-        $('#botao-salvar').click(function() {
-            var form = $('#form-agendamentos-alunos').serialize();
-
-            console.log(form)
-
-            $.post('<?= base_url('Agendamentos/cadastroAction') ?>', form, function(retorno) {
-                if (retorno.erro) {
-                    $('.retorno-erro').html("");
-                    $('.retorno-erro').addClass('alert-warning');
-                    $('.retorno-erro').html(`<strong>Atenção!</strong> ${retorno.mensagem}`);
-                    $('.retorno-erro').show();
-                } else {
-                    $('.retorno-erro').html("");
-                    if ($('.retorno-erro').hasClass('alert-warning')) {
-                        $('.retorno-erro').removeClass('alert-warning');
-                    }
-                    $('.retorno-erro').addClass('alert-success');
-                    $('.retorno-erro').html(`${retorno.mensagem}`);
-                    $('.retorno-erro').show();
-                    $('#form-agendamentos-alunos input').val("");
-                    $("#form-agendamentos-alunos select").val([]);
-                }
-            }, "json");
-        });
-    }
-</script>
