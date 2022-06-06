@@ -1,15 +1,17 @@
 <!-- IMAGEM SUPERIOR -->
-<div class="jumbotron jumb-image">
+<div class="jumbotron jumb-image" >
     <h1 class="display-4 jumb-titulo">ACADEMIA SISCTRL</h1>
     <h1 class="display-6 jumb-descricao">A MELHOR ACADEMIA DA CIDADE</h1>
     <hr style="background-color: gray" class="my-4">
     <a class="btn btn-lg jumb-botao" href="<?= base_url('Login') ?>" role="button">É NOSSO ALUNO? AGENDE JÁ SUA AULA!</a>
 </div>
 
-<div style="margin-top: 30px" class="container secao">
+<div style="margin-top: 30px" class="container secao" id="informa">
     <!-- DIVISÓRIA -->
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
+            <br>
+            <br>
             <h3 class="nomeDivisoria">INFORME - SE</h3>
             <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
@@ -37,12 +39,16 @@
     </div>
 </div>
 
-<div class="container secao">
+<div class="container secao" id="aulas">
     <!-- DIVISÓRIA -->
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
             <h3 class="nomeDivisoria">SERVIÇOS</h3>
             <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
+            <br>
+            <br>
+            <br>
+
         </div>
     </div>
 
@@ -79,7 +85,53 @@
     </div>
 </div>
 
-<div class="container secao">
+<div class="container secao" id="unidades">
+    <!-- DIVISÓRIA -->
+    <div class="row divisoria align-items-center">
+        <div class="col mx-auto text-center">
+            <h3 class="nomeDivisoria">UNIDADES</h3>
+            <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="embed-responsive-4by3 embed-responsive">
+                        <img src="<?= base_url() . "public/imagens/unidade/uni1.jpg" ?>" class="embed-responsive-item card-img-top img-adjusted card-imagem">
+                    </div>
+                    <div class="card-body card-texto">Unidade Palmares</div>
+                </div>
+                <div class="card">
+                    <div class="embed-responsive-4by3 embed-responsive">
+                        <img src="<?= base_url() . "public/imagens/unidade/uni2.jpg" ?>" class="embed-responsive-item card-img-top img-adjusted card-imagem">
+                    </div>
+                    <div class="card-body card-texto">Unidade Imbiribeira</div>
+                </div>
+                <div class="card">
+                    <div class="embed-responsive-4by3 embed-responsive">
+                        <img src="<?= base_url() . "public/imagens/unidade/uni3.jpg" ?>" class="embed-responsive-item card-img-top img-adjusted card-imagem">
+                    </div>
+                    <div class="card-body card-texto">Unidade Boa Viagem</div>
+                </div>
+                <div class="card">
+                    <div class="embed-responsive-4by3 embed-responsive">
+                        <img src="<?= base_url() . "public/imagens/unidade/uni4.jpg" ?>" class="embed-responsive-item card-img-top img-adjusted card-imagem">
+                    </div>
+                    <div class="card-body card-texto">Unidade Caruaru</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container secao" id="contato">
     <!-- DIVISÓRIA -->
     <div class="row divisoria align-items-center">
         <div class="col mx-auto text-center">
@@ -87,6 +139,8 @@
             <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
         </div>
     </div>
+
+
     <!-- SEÇÃO 3 -->
     <div class="row">
         <div class="col-md">
