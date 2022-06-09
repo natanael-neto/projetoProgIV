@@ -45,10 +45,7 @@
         <div class="col mx-auto text-center">
             <h3 class="nomeDivisoria">SERVIÇOS</h3>
             <img class="img-fluid center-block" src="<?= base_url() . "public/imagens/divisoriaLaranja.png" ?>">
-            <br>
-            <br>
-            <br>
-
+            <br><br><br>
         </div>
     </div>
 

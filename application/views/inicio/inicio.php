@@ -1,7 +1,6 @@
-<?php include APPPATH . 'views/layoutElements/navInicio.php' ?>
 
 <div class="container">
-    <div class="jumbotron jumb-inicio">
+    <div  class="jumbotron jumb-inicio">
         <h1 class="display-4">SEJA BEM-VINDO!</h1>
         <p class="lead">Aqui é a central para que você possa ter melhor controle da gestão da sua academia!</p>
         <hr class="my-4">
