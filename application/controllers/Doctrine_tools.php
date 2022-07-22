@@ -49,7 +49,12 @@ class Doctrine_tools extends CI_Controller
                     $this->em->getClassMetadata('models\entidades\Agendamento'),
                     $this->em->getClassMetadata('models\entidades\Profissional'),
                     $this->em->getClassMetadata('models\entidades\Usuario'),
-                    $this->em->getClassMetadata('models\entidades\Endereco')
+                    $this->em->getClassMetadata('models\entidades\Endereco'),
+                    $this->em->getClassMetadata('models\entidades\Medida'),
+                    $this->em->getClassMetadata('models\entidades\Exercicio'),
+                    $this->em->getClassMetadata('models\entidades\Categoria'),
+                    $this->em->getClassMetadata('models\entidades\Requisicao')
+  
                 );
 
                 $tool->updateSchema($classes);
@@ -106,12 +111,14 @@ class Doctrine_tools extends CI_Controller
 
             $usuarioAluno->setUsername('aluno');
             $usuarioAluno->setLogin('222.222.222-22');
+            $usuarioAluno->setEmail('aluno@gmail.com');
             $usuarioAluno->setPassword(md5('facol123'));
             $usuarioAluno->setActive(true);
             $usuarioAluno->setPerfil($perfilAluno);
 
             $usuarioAdmin->setUsername('admin');
             $usuarioAdmin->setLogin('111.111.111-11');
+            $usuarioAdmin->setEmail('admin@gmail.com');
             $usuarioAdmin->setPassword(md5('facol123'));
             $usuarioAdmin->setActive(true);
             $usuarioAdmin->setPerfil($perfilAdmin);

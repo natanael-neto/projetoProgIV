@@ -257,6 +257,7 @@ footer i {
 
 .row-form {
     margin-top: 20px;
+    width: 100%;
 }
 
 .title-form {
@@ -300,3 +301,36 @@ footer i {
     background-color: #fff;
     border: 1px solid #dee2e6
 }
+
+.card{
+    min-width: 320px;
+    min-height: 320px;
+    
+}
+
+.card-header{
+    text-align: center;
+    background-color: #192A51;
+    color: #fff;
+    font-weight: bold;
+
+}
+
+.card-text{
+    text-align: center;
+}
+
+.alerta{
+    margin-left: 8px;
+    font-size: 13px;
+    color: #666666;
+}
+
+.confere{
+    color: green;
+
+}
+.n-confere{
+    color: #C1222B;
+}
+

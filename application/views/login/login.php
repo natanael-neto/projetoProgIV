@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" >
     <div class="row">
-        <div class="col-12 main-title">
+        <div class="col-12 main-title" style="margin-top: 13%;">
             <p>Insira seus dados</p>
         </div>
     </div>
@@ -18,9 +18,12 @@
                     <p>Senha </p>
                     <input type="password" autocomplete="off" name="senha" class="form-control form-control-lg" placeholder="Digite sua senha.">
                 </div>
+                <a href="<?= base_url('Login/esqueci') ?>">Esqueceu sua senha?</a>
             </div>
+            
             <div class="col-12">
                 <div class="form-group">
+                    
                     <button type="submit" class="btn btn-lg botao-submit-login">ENTRAR</button>
                 </div>
             </div>
@@ -30,10 +33,11 @@
                         <?= $this->session->flashdata('message') ?>
                     </div>
                 </div>
-            <?php endif; ?>
-        </div>
-    </form>
-</div>
+                <?php endif; ?>
+            </div>
+        </form>
+    </div>
+    
 
 <script>
     function onReady() {

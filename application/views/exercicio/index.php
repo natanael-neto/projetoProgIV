@@ -1,9 +1,9 @@
 <div class="row area-row-cadastro">
     <div class="col col-10">
-        <span class="titulo-row-cadastro">ALUNOS</span>
+        <span class="titulo-row-cadastro">EXERCÍCIOS</span>
     </div>
     <div class="col col-2 col-botao-cadastro">
-        <a style="font-weight: 700;" href="<?= base_url('Alunos/cadastro') ?>" class="btn btn-md btn-info"><i class="fa fa-plus icon-botao-sair"></i> CADASTRAR</a>
+        <a style="font-weight: 700;" href="<?= base_url('Exercicios/cadastro') ?>" class="btn btn-md btn-info"><i class="fa fa-plus icon-botao-sair"></i> CADASTRAR</a>
     </div>
 </div>
 
@@ -11,27 +11,28 @@
 </div>
 
 <div>
-    <table class="table table-striped tabela-alunos">
+    <table class="table table-striped tabela-exercicios">
         <thead class="thead-dark">
             <tr>
                 <th style="text-align: center;" scope="col">#</th>
                 <th style="text-align: center;" scope="col">Nome</th>
-                <th style="text-align: center;" scope="col">E-mail</th>
-                <th style="text-align: center;" scope="col">Plano</th>
+                <th style="text-align: center;" scope="col">Categoria</th>
+                <!-- <th style="text-align: center;" scope="col">Modalidade</th> -->
+                <th style="text-align: center;" scope="col">Medida</th>
                 <th style="text-align: center;" scope="col" width="150">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($alunos as $aluno) : ?>
-                <tr data-id="<?= $aluno->getId() ?>" class="tr-aluno-<?= $aluno->getId() ?>">
-                    <td style="text-align: center;" scope="row"><?= $aluno->getId() ?></td>
-                    <td style="text-align: center;"><?= $aluno->getNome() ?></td>
-                    <td style="text-align: center;">---</td>
-                    <td style="text-align: center;"><?= $aluno->getPlano()->getNome() ?></td>
+            <?php foreach ($exercicios as $exercicio) : ?>
+                <tr data-id="<?= $exercicio->getId() ?>" class="tr-exercicio-<?= $exercicio->getId() ?>">
+                    <td style="text-align: center;" scope="row"><?= $exercicio->getId() ?></td>
+                    <td style="text-align: center;" scope="row"><?= $exercicio->getNome() ?></td>
+                    <td style="text-align: center;"><?= $exercicio->getCategoria()->getNome() ?></td>
+                    <td style="text-align: center;"><?= $exercicio->getMedida()->getNome()  ?></td>
                     <td>
                         <div class="btn-group mr-2 btn-group-sm" role="group" aria-label="First group">
-                            <a href="<?= base_url('Alunos/editar/') . $aluno->getId() ?>" class="btn btn-warning link-acoes">EDITAR</a>
-                            <a class="btn btn-danger link-acoes excluir-aluno">EXCLUIR</a>
+                            <a href="<?= base_url('Exercicios/editar/') . $exercicio->getId() ?>" class="btn btn-warning link-acoes">EDITAR</a>
+                            <a class="btn btn-danger link-acoes excluir-exercicio">EXCLUIR</a>
                         </div>
                     </td>
                 </tr>
@@ -39,24 +40,24 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="5"><?= $this->pagination->create_links(); ?></th>
+                <th colspan="6"><?= $this->pagination->create_links(); ?></th>
             </tr>
         </tfoot>
     </table>
 </div>
 
-<div style="margin-top: 15%" class="modal" id="modal-excluir-aluno" tabindex="-1">
+<div style="margin-top: 15%" class="modal" id="modal-excluir-exercicio" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <input type="hidden" name="idHidden" value="">
             <div class="modal-header">
-                <h5 class="modal-title" >EXCLUIR ALUNO</h5>
+                <h5 class="modal-title">EXCLUIR EXERCÍCIO</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <p>Deseja excluir esse aluno?</p>
+            <div class="modal-body">
+                <p>Deseja excluir essa exercício?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">NÃO</button>
@@ -70,8 +71,8 @@
     function onReady() {
 
         $('.nav-link').removeClass('active');
-        $('.alunos-link').addClass('active');
-        $('#dropdown-cadastros').addClass('active');
+        $('.exercicio-link').addClass('active');
+        $('#dropdown-operacional').addClass('active');
 
         $('.nav-link').click(function() {
             $('.nav-link').removeClass('active');
@@ -79,16 +80,16 @@
         });
 
 
-        $('.excluir-aluno').click(function() {
+        $('.excluir-exercicio').click(function() {
             var id = $(this).closest('tr').data('id');
             $('input[name=idHidden]').val(id);
-            $('#modal-excluir-aluno').modal();
+            $('#modal-excluir-exercicio').modal();
         });
 
         $('.confirmar-excluir').click(function() {
             var id = $('input[name=idHidden]').val();
 
-            $.post('<?= base_url('Alunos/excluir') ?>/' + id, function(retorno) {
+            $.post('<?= base_url('Exercicios/excluir') ?>/' + id, function(retorno) {
                 if (retorno.erro) {
                     $('.retorno-erro').html("");
                     $('.retorno-erro').addClass('alert-warning');
@@ -103,11 +104,11 @@
                     $('.retorno-erro').html(`${retorno.mensagem}`);
                     $('.retorno-erro').show();
 
-                    $(`.tr-aluno-${id}`).remove();
+                    $(`.tr-exercicio-${id}`).remove();
                 }
             }, "json");
 
-            $('#modal-excluir-aluno').modal('hide');
+            $('#modal-excluir-exercicio').modal('hide');
         });
     }
 </script>

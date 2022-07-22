@@ -158,6 +158,7 @@ class Alunos extends MY_Controller
 			$usuario->setLogin($_POST['cpf']);
 			$usuario->setUsername($_POST['nome']);
 			$usuario->setActive(true);
+			$usuario->setEmail($_POST['email']);
 
 			if (empty($usuario->getId())) {
 				$senha = gerar_senha();
@@ -177,7 +178,7 @@ class Alunos extends MY_Controller
 			$aluno->setUsuario($usuario);
 			$aluno->setNome($_POST['nome']);
 			$aluno->setCpf($_POST['cpf']);
-			$aluno->setEmail($_POST['email']);
+			//$aluno->setEmail($_POST['email']);
 			$aluno->setTelefone($_POST['telefone']);
 			$aluno->setDataNascimento(dataStrToObject($_POST['dataNascimento']));
 			$aluno->setEndereco($endereco);

@@ -190,6 +190,7 @@ class Funcionarios extends MY_Controller
             $usuario->setLogin($_POST['cpf']);
             $usuario->setUsername($_POST['nome']);
             $usuario->setActive(true);
+            $usuario->setEmail($_POST['email']);
 
             if (empty($usuario->getId())) {
                 $senha = gerar_senha();
@@ -199,7 +200,7 @@ class Funcionarios extends MY_Controller
             $funcionario->setUsuario($usuario);
             $funcionario->setNome($_POST['nome']);
             $funcionario->setCpf($_POST['cpf']);
-            $funcionario->setEmail($_POST['email']);
+            //$funcionario->setEmail($_POST['email']);
             $funcionario->setTelefone($_POST['telefone']);
             $funcionario->setDataNascimento(dataStrToObject($_POST['dataNascimento']));
             $funcionario->setInicioJornada($_POST['inicioJornada']);
@@ -257,4 +258,8 @@ class Funcionarios extends MY_Controller
 
         die(json_encode($retorno));
     }
+    public function redefinir(){
+        
+    }
+
 }

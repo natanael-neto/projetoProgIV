@@ -3,8 +3,11 @@
 use models\bll\ProfessorBLL;
 use models\bll\EnderecoBLL;
 use models\bll\AulaBLL;
+use models\bll\UsuarioBLL;
+use models\bll\PerfilBLL;
 use \models\entidades\Professor;
 use \models\entidades\Endereco;
+use models\entidades\Usuario;
 
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -63,9 +66,11 @@ class Professores extends MY_Controller
 
                 $professor = $professorBLL->buscarPorId($_POST['id']);
                 $endereco = $professor->getEndereco();
+                $usuario = $professor->getUsuario();
             } else {
                 $professor = new Professor();
                 $endereco = new Endereco();
+                $usuario = new Usuario();
             }
 
             $retorno = array('erro' => true);
@@ -131,6 +136,19 @@ class Professores extends MY_Controller
                 throw new Exception("Por favor, digite um CEP válido.");
             }
 
+            $perfilBLL = new PerfilBLL();
+
+            $usuario->setPerfil($perfilBLL->buscarUmPor(array('nome' => 'funcionario')));
+			$usuario->setLogin($_POST['cpf']);
+			$usuario->setUsername($_POST['nome']);
+			$usuario->setActive(true);
+			$usuario->setEmail($_POST['email']);
+
+            if (empty($usuario->getId())) {
+				$senha = gerar_senha();
+				$usuario->setPassword(md5($senha));
+			}
+
             $endereco->setLogradouro($_POST['logradouro']);
             $endereco->setNumero($_POST['numero']);
             $endereco->setCidade($_POST['cidade']);
@@ -141,9 +159,10 @@ class Professores extends MY_Controller
             $endereco->setPontoReferencia($_POST['pontoReferencia']);
             $endereco->setCep($_POST['cep']);
 
+            $professor->setUsuario($usuario);
             $professor->setNome($_POST['nome']);
             $professor->setCpf($_POST['cpf']);
-            $professor->setEmail($_POST['email']);
+            //$professor->setEmail($_POST['email']);
             $professor->setTelefone($_POST['telefone']);
             $professor->setDataNascimento(dataStrToObject($_POST['dataNascimento']));
             $professor->setCref($_POST['cref']);
@@ -171,6 +190,7 @@ class Professores extends MY_Controller
             $enderecoBLL = new EnderecoBLL();
             $professorBLL = new ProfessorBLL();
             $aulaBLL = new AulaBLL();
+            $usuarioBLL = new UsuarioBLL();
 
             $aulas = $aulaBLL->consultar("p.id = {$id}", null, "JOIN e.professor p");
 
@@ -180,6 +200,7 @@ class Professores extends MY_Controller
 
             $professor = $professorBLL->buscarPorId($id);
 
+            $usuarioBLL->removerPorId($professor->getUsuario()->getId());
             $enderecoBLL->removerPorId($professor->getEndereco()->getId());
             $professorBLL->removerPorId($professor->getId());
 

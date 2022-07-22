@@ -1,13 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col col-12 col-titulo-page-cadastro">
-            <span class="titulo-page-cadastro"><?= isset($modalidade) ? "EDITAR" : "CADASTRAR" ?> MODALIDADE</span>
+            <span class="titulo-page-cadastro"><?= isset($categoria) ? "EDITAR" : "CADASTRAR" ?> CATEGORIA</span>
         </div>
     </div>
-    <div style="display: none" class="alert alert-dismissible fade show retorno-erro" role="alert"></div>
+    <div style="display: none" class="alert alert-dismissible fade show retorno-erro" role="alert">
+    </div>
     <hr>
-    <form id="form-modalidades" autocomplete="off">
-        <input type="hidden" name="id" value="<?= isset($modalidade) ? $modalidade->getId() : "" ?>">
+    <form id="form-categoria" autocomplete="off">
+        <input type="hidden" name="id" value="<?= isset($categoria) ? $categoria->getId() : "" ?>">
         <div class="row row-form">
             <div class="col col-12 title-form">
                 DADOS:
@@ -16,13 +17,13 @@
         <div class="row row-form">
             <div class="col col-lg-12 col-xs-12">
                 <label for="input-nome">NOME</label>
-                <input value="<?= isset($modalidade) ? $modalidade->getNome() : "" ?>" type="text" class="form-control" id="input-nome" name="nome">
+                <input value="<?= isset($categoria) ? $categoria->getNome() : "" ?>" type="text" class="form-control" id="input-nome" name="nome">
             </div>
         </div>
         <div class="row row-form">
             <div class="col col-lg-12 col-xs-12">
                 <label for="input-descricao">DESCRIÇÃO</label>
-                <textarea name="descricao" class="form-control" id="input-descricao" rows="3"><?= isset($modalidade) ? $modalidade->getDescricao() : "" ?></textarea>
+                <textarea name="descricao" class="form-control" id="input-descricao" rows="3"><?= isset($categoria) ? $categoria->getDescricao() : "" ?></textarea>
             </div>
         </div>
         <div style="text-align: end;" class="row row-form">
@@ -39,7 +40,7 @@
     function onReady() {
         // marcação no dropdown
         $('.nav-link').removeClass('active');
-        $('.modalidades-link').addClass('active');
+        $('.categoria-link').addClass('active');
         $('#dropdown-operacional').addClass('active');
 
         $('.nav-link').click(function() {
@@ -49,9 +50,11 @@
 
         // submit do form
         $('#botao-salvar').click(function() {
-            var form = $('#form-modalidades').serialize();
+            var form = $('#form-categoria').serialize();
 
-            $.post('<?= base_url('Modalidades/cadastroAction') ?>', form, function(retorno) {
+            
+            $.post('<?= base_url('Categorias/cadastroAction') ?>', form, function(retorno) {
+                console.log(retorno);
                 if (retorno.erro) {
                     $('.retorno-erro').html("");
                     $('.retorno-erro').addClass('alert-warning');
@@ -65,10 +68,10 @@
                     $('.retorno-erro').addClass('alert-success');
                     $('.retorno-erro').html(`${retorno.mensagem}`);
                     $('.retorno-erro').show();
-                    $('#form-modalidades input').val("");
-                    $('#form-modalidades textarea').val("");
+                    $('#form-categoria input').val("");
                 }
             }, "json");
         });
+
     }
 </script>

@@ -31,16 +31,26 @@
 			        <a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link a-link active" href="<?= base_url('Inicio') ?>">HOME</a>
 			    </li>
 
+				
 			    <li style="margin: 0 5%" class="nav-item dropdown">
 			        <a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link dropdown-toggle a-link" href="#" id="dropdown-operacional" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			            AGENDAMENTO
 			        </a>
-
+					
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			            <a class="dropdown-item drop-a agendamentos-link" href="<?= base_url('AlunosAgendamento/agendar') ?>">AGENDAR</a>
+						<a class="dropdown-item drop-a agendamentos-link" href="<?= base_url('AlunosAgendamento/agendar') ?>">AGENDAR</a>
 			            <a class="dropdown-item drop-a modalidades-link" href="<?= base_url("AlunosAgendamento/agendamentos/{$this->usuarioLogado->getAluno()->getId()}") ?>">MEUS AGENDAMENTOS</a>
 		            </div>
 			    </li>
+				
+				<li style="margin: 0 5%" class="nav-item">
+					<a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link treinos-link a-link" href="<?= base_url('Treinos') ?>">TREINOS</a>
+				</li>
+
+				<li style="margin: 0 5%" class="nav-item">
+					<a style="color:aliceblue; font-size: 18px; font-weight: 600;" class="nav-link treinos-link a-link" href="<?= base_url('Senhas/index') ?>">SENHA</a>
+				</li>
+				
 			</ul>
 
             <div class="inline">

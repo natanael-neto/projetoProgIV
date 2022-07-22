@@ -1,5 +1,6 @@
 <?php
 
+use models\bll\ExercicioBLL;
 use models\bll\ModalidadeBLL;
 use models\bll\PlanoBLL;
 use models\bll\AulaBLL;
@@ -47,8 +48,10 @@ class Modalidades extends MY_Controller
     public function editar($id)
     {
         $modalidadeBLL = new ModalidadeBLL();
+        $exercicioBLL = new ExercicioBLL();
 
         $data['modalidade'] = $modalidadeBLL->buscarPorId($id);
+        $data['exercicio'] = $exercicioBLL->buscarPorId($id);
         $data['titulo'] = "Modalidades";
         $this->template->load('templateInterno', 'modalidade/cadastro', $data);
     }
@@ -99,9 +102,11 @@ class Modalidades extends MY_Controller
             $modalidadeBLL = new ModalidadeBLL();
             $aulaBLL = new AulaBLL();
             $planoBLL = new PlanoBLL();
+            $exercicioBLL = new ExercicioBLL();
 
             $aulas = $aulaBLL->consultar("m.id = {$id}", null, "JOIN e.modalidade m");
             $planos = $planoBLL->consultar("m.id = {$id}", null, "JOIN e.modalidades m");
+            $exercicios = $exercicioBLL->consultar("m.id = {$id}", null, "JOIN e.modalidades m");
 
             if (count($aulas) > 0) {
                 throw new Exception('Esta modalidade está cadastrada em uma ou mais aulas. Por favor, cheque as aulas.');
@@ -110,8 +115,13 @@ class Modalidades extends MY_Controller
             if (count($planos) > 0) {
                 throw new Exception('Esta modalidade está cadastrada em um ou mais planos. Por favor, cheque os planos.');
             }
-
+            
+/*             if(count($exercicios) > 0){
+                throw new Exception('Esta modalidade está cadastrada em um ou mais exercicios. Por favor, cheque os exercicios.'); 
+            } */
+            //Busco a modalidade por ID e em seguida pego essa modalidade e dou um get nos Exercicios em seguida dou o clear
             $modalidade = $modalidadeBLL->buscarPorId($id);
+            $modalidade->getExercicios()->clear();
             $modalidadeBLL->removerPorId($modalidade->getId());
 
             $this->doctrine->em->flush();

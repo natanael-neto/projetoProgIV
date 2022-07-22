@@ -21,12 +21,6 @@ class Professor extends Entidade
 
     /**
      * @var string
-     * @Column(type="string", length=255, nullable=false)
-     */
-    protected $email;
-
-    /**
-     * @var string
      * @Column(type="string", length=20, nullable=false)
      */
     protected $telefone;
@@ -46,6 +40,12 @@ class Professor extends Entidade
      * @Column(type="string", length=100, nullable=false)
      */
     protected $cref;
+
+    /**
+     * @OneToOne(targetEntity="Usuario", inversedBy="professor")
+     * @JoinColumn(name="usuario_id", referencedColumnName="id")
+     */
+    private $usuario;
 
     /**
      * @return string
@@ -77,22 +77,6 @@ class Professor extends Entidade
     public function setCpf($cpf)
     {
         $this->cpf = $cpf;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     }
 
     /**
@@ -158,4 +142,21 @@ class Professor extends Entidade
     {
         $this->cref = $cref;
     }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
 }

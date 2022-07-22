@@ -145,7 +145,7 @@ class Aulas extends MY_Controller
             $agendamentos = $agendamentoBLL->consultar("a.id = {$id}", null, "JOIN e.aula a");
 
             if (count($agendamentos) > 0) {
-                throw new Exception('Esta aula está cadastrada em uma ou mais agendamentos. Por favor, cheque os agendamentos.');
+                throw new Exception('Esta aula está cadastrada em um ou mais agendamentos. Por favor, cheque os agendamentos.');
             }
 
             $aulaBLL->removerPorId($aulaBLL->buscarPorId($id));

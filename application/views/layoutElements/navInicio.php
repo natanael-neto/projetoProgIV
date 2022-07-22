@@ -54,8 +54,13 @@
 			                <a class="dropdown-item drop-a modalidades-link" href="<?= base_url('Modalidades') ?>">MODALIDADES</a>
 			                <a class="dropdown-item drop-a planos-link" href="<?= base_url('Planos') ?>">PLANOS</a>
 			                <a class="dropdown-item drop-a aulas-link" href="<?= base_url('Aulas') ?>">AULAS</a>
-			            </div>
+							<a class="dropdown-item drop-a exercicio-link" href="<?= base_url('Exercicios') ?>">EXERCÍCIOS</a>
+							<a class="dropdown-item drop-a categoria-link" href="<?= base_url('Categorias') ?>">CATEGORIAS</a>
+							<a class="dropdown-item drop-a medida-link" href="<?= base_url('Medidas') ?>">MEDIDAS</a>
+							<a class="dropdown-item drop-a senha-link" href="<?= base_url('Senhas/index') ?>">REDEFINIR SENHA</a>
+						</div>
 			        </li>
+
 			    </ul>
 
 			    <div class="inline">

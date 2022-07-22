@@ -21,12 +21,6 @@ class Aluno extends Entidade
 
     /**
      * @var string
-     * @Column(type="string", length=255, nullable=false)
-     */
-    protected $email;
-
-    /**
-     * @var string
      * @Column(type="string", length=20, nullable=false)
      */
     protected $telefone;
@@ -83,22 +77,6 @@ class Aluno extends Entidade
     public function setCpf($cpf)
     {
         $this->cpf = $cpf;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     }
 
     /**

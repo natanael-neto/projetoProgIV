@@ -23,6 +23,12 @@ class Usuario extends Entidade
      * @var string
      * @Column(type="string", length=255, nullable=false)
      */
+    protected $email;
+
+    /**
+     * @var string
+     * @Column(type="string", length=255, nullable=false)
+     */
     protected $password;
 
     /**
@@ -146,5 +152,22 @@ class Usuario extends Entidade
     public function setProfissional($profissional)
     {
         $this->profissional = $profissional;
+
+    }
+    
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }

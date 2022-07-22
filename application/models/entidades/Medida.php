@@ -3,9 +3,9 @@
 namespace models\entidades;
 
 /**
- * @Entity @Table(name="perfil")
+ * @Entity @Table(name="medida")
  * */
-class Perfil extends Entidade
+class Medida extends Entidade
 {
     /**
      * @var string
@@ -28,5 +28,4 @@ class Perfil extends Entidade
     {
         $this->nome = $nome;
     }
-
 }
